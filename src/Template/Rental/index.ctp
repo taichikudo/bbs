@@ -1,8 +1,4 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Rental[]|\Cake\Collection\CollectionInterface $rental
- */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
