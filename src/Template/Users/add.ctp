@@ -25,6 +25,6 @@
             echo $this->Form->control('user_out');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('送信')) ?>
     <?= $this->Form->end() ?>
 </div>
