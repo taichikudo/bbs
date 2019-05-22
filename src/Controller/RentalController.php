@@ -43,9 +43,9 @@ class RentalController extends AppController
         $this->set(compact('rental', 'rentalUsers', 'rentalBooks'));
     }
 
-    public function edit($id = null)
+    public function edit()
     {
-      $id = $this->request->['id'];
+      $id = $this->request->query['id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
     }
@@ -54,7 +54,7 @@ public function update(){
   if ($this->request->is('post')){
     $data = $this->request->data['Rental'];
     $entity = $this->Rental->get($data['id']);
-    $this->Rental->patchRental($entity,$data);
+    $this->Rental->patchEntity($entity,$data);
     $this->Rental->save($entity);
   }
   return $this->redirect(['action'=>'index']);

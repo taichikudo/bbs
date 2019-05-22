@@ -11,7 +11,7 @@
 <table>
   <thead>
     <tr>
-      <th>会員ID</th><th>資料ID</th><th>返却期日</th><th>返却日</th><th>備考</th>
+<th>レンタルID</th><th>会員ID</th><th>資料ID</th><th>返却期日</th><th>返却日</th><th>備考</th>
     </tr>
   </thead>
   <?php foreach ($data->toArray() as $obj): ?>
