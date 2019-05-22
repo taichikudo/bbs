@@ -45,22 +45,20 @@ class RentalController extends AppController
 
     public function edit($id = null)
     {
-        $rental = $this->Rental->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $rental = $this->Rental->patchEntity($rental, $this->request->getData());
-            if ($this->Rental->save($rental)) {
-                $this->Flash->success(__('The rental has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The rental could not be saved. Please, try again.'));
-        }
-        $rentalUsers = $this->Rental->RentalUsers->find('list', ['limit' => 200]);
-        $rentalBooks = $this->Rental->RentalBooks->find('list', ['limit' => 200]);
-        $this->set(compact('rental', 'rentalUsers', 'rentalBooks'));
+      $id = $this->request->['id'];
+      $entity = $this->Rental->get($id);
+      $this->set('entity',$entity);
     }
+
+public function update(){
+  if ($this->request->is('post')){
+    $data = $this->request->data['Rental'];
+    $entity = $this->Rental->get($data['id']);
+    $this->Rental->patchRental($entity,$data);
+    $this->Rental->save($entity);
+  }
+  return $this->redirect(['action'=>'index']);
+}
 
     public function delete($id = null)
     {
