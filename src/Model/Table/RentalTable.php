@@ -17,37 +17,37 @@ class RentalTable extends Table
         $this->setPrimaryKey('id');
 
 $this->belongsTo('Users',[
-  'foreignKey'='user_id'
+  'foreignKey'=>'user_id'
 ]);
 $this->belongsTo('Bookstate',[
-  'foreignKey'='book_id'
+  'foreignKey'=>'book_id'
 ]);
 
     }
 
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
-
-        $validator
-            ->date('rental_date')
-            ->requirePresence('rental_date', 'create')
-            ->allowEmptyDate('rental_date', false);
-
-        $validator
-            ->date('rental_return')
-            ->requirePresence('rental_return', 'create')
-            ->allowEmptyDate('rental_return', false);
-
-        $validator
-            ->scalar('rental_etc')
-            ->maxLength('rental_etc', 200)
-            ->requirePresence('rental_etc', 'create')
-            ->allowEmptyString('rental_etc', false);
-
-        return $validator;
-    }
+    // public function validationDefault(Validator $validator)
+    // {
+    //     $validator
+    //         ->integer('id')
+    //         ->allowEmptyString('id', 'create');
+    //
+    //     $validator
+    //         ->date('rental_date')
+    //         ->requirePresence('rental_date', 'create')
+    //         ->allowEmptyDate('rental_date', false);
+    //
+    //     $validator
+    //         ->date('rental_return')
+    //         ->requirePresence('rental_return', 'create')
+    //         ->allowEmptyDate('rental_return', false);
+    //
+    //     $validator
+    //         ->scalar('rental_etc')
+    //         ->maxLength('rental_etc', 200)
+    //         ->requirePresence('rental_etc', 'create')
+    //         ->allowEmptyString('rental_etc', false);
+    //
+    //     return $validator;
+    // }
 
   }

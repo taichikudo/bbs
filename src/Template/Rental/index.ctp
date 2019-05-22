@@ -7,6 +7,7 @@
 <div><?=$this->Form->submit('検索')?></div>
 <?=$this->Form->end()?>
 <p>検索結果</p>
+  <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">貸出</a></p>
 <hr>
 <table>
   <thead>
@@ -24,8 +25,7 @@
       <td><?=h($obj->rental_etc)?></td>
       <td><a href="<?=$this->Url->build(['controller'=>'Rental',
       'action'=>'edit']);?>?id=<?=$obj->id ?>">返却</td>
-
-
     </tr>
     <?php endforeach; ?>
+
 </table>
