@@ -7,9 +7,14 @@ class UsersController extends AppController
 {
     public function index()
     {
-        $users = $this->paginate($this->Users);
-
-        $this->set(compact('users'));
+      if($this->request->is('post')){
+        $find = $this->request->data['Users']['find'];
+        $condition = ['conditions'=>['name'=>$find]];
+        $data = $this->Users->find('all',$condition);
+      }else{
+        $data=$this->Users->find('all');
+      }
+      $this->set(compact('data'));
     }
 
     public function view($id = null)
