@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
-class BookinfoController extends AppController
+class BbsController extends AppController
 {
   public $useTable = false;
 public function top(){
