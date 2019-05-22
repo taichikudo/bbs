@@ -7,6 +7,6 @@
   <div class="">
     find
   </div>
-  <div class=""><?=$this->Form->text('User.find') ?></div>
+  <div class=""><?=$this->Form->text('Users.find') ?></div>
   <div class=""><?$this->Form->submit('検索') ?></div>
   <?=$this->Form->end() ?>
