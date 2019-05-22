@@ -16,12 +16,14 @@
   </thead>
   <?php foreach ($data->toArray() as $obj): ?>
     <tr>
-      <td><?=h($obj->id)?></td>
+
       <td><?=h($obj->rental_user_id)?></td>
       <td><?=h($obj->rental_book_id)?></td>
       <td><?=h($obj->rental_date)?></td>
       <td><?=h($obj->rental_return)?></td>
       <td><?=h($obj->rental_etc)?></td>
+      <td><a href="<?=$this->Url->build(['controller'=>'Rental',
+      'action'=>'edit']);?>?id=<?=$obj->id ?>">返却</td>
 
 
     </tr>
