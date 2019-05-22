@@ -3,10 +3,10 @@
 <?=$this->Form->create(null,
 ['type'=>'post',
 'url'=>['controller'=>'Users',
-'action'=>'search']]) ?>
+'action'=>'index']]) ?>
   <div class="">
-    find
+    会員番号を入力ください
   </div>
   <div class=""><?=$this->Form->text('Users.find') ?></div>
-  <div class=""><?$this->Form->submit('検索') ?></div>
-  <?=$this->Form->end() ?>
+  <div class=""><?=$this->Form->submit('検索') ?></div>
+<?=$this->Form->end() ?>
