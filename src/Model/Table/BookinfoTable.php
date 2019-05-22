@@ -33,6 +33,10 @@ class BookinfoTable extends Table
         $this->setTable('bookinfo');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Bookstate', [
+          'foreignkey' => 'id',
+        ])
     }
 
     /**

@@ -23,6 +23,7 @@ class Category extends Entity
      */
     protected $_accessible = [
         'category_code' => true,
-        'category_name' => true
+        'category_name' => true,
+        'bookinfo' => true
     ];
 }

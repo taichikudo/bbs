@@ -31,6 +31,8 @@ class Bookinfo extends Entity
         'bookinfo_code' => true,
         'bookinfo_auther' => true,
         'bookinfo_com' => true,
-        'bookinfo_startday' => true
+        'bookinfo_startday' => true,
+        'bookstate' => true,
+        'categories' => true
     ];
 }
