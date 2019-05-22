@@ -3,7 +3,7 @@
 <?=$this->Form->create(null,
 ['type'=>'post',
 'url'=>['controller'=>'Users',
-'action'=>'index']]) ?>
+'action'=>'search']]) ?>
   <div class="">
     find
   </div>
