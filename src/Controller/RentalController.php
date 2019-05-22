@@ -7,12 +7,12 @@ class RentalController extends AppController
 {
     public function index()
     {
-        if($this->request->isPost()){
+        if($this->request->is('post')){
           $find = $this->request->data['Rental']['find'];
           $condition = ['conditions'=>['id'=>$find]];
           $data = $this->Rental->find('all',$condition);
         }else{
-          $data - $this->Rental->find('all');
+          $data = $this->Rental->find('all');
         }
         $this->set('data',$data);
     }
