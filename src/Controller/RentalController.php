@@ -7,12 +7,14 @@ class RentalController extends AppController
 {
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['RentalUsers', 'RentalBooks']
-        ];
-        $rental = $this->paginate($this->Rental);
-
-        $this->set(compact('rental'));
+        if($this->request->isPost()){
+          $find = $this->request->data['Rental']['find'];
+          $condition = ['conditions'=>['id'=>$find]];
+          $data = $this->Rental->find('all',$condition);
+        }else{
+          $data - $this->Rental->find('all');
+        }
+        $this->set('data',$data);
     }
 
     public function view($id = null)
