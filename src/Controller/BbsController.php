@@ -5,6 +5,11 @@ use App\Controller\AppController;
 
 class BookinfoController extends AppController
 {
+public function top(){
+
+}
+
+
     public function index()
     {
         $bookinfo = $this->paginate($this->Bookinfo);
@@ -36,4 +41,4 @@ class BookinfoController extends AppController
         $this->set(compact('bookinfo'));
     }
 
-    public function edit($id = null)
+  }
