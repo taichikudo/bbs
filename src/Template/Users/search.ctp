@@ -1,12 +1,28 @@
 
-<p>会員検索画面</p>
-<?=$this->Form->create(null,
-['type'=>'post',
-'url'=>['controller'=>'Users',
-'action'=>'index']]) ?>
-  <div class="">
-    会員番号を入力ください
-  </div>
-  <div class=""><?=$this->Form->text('Users.find') ?></div>
-  <div class=""><?=$this->Form->submit('検索') ?></div>
-<?=$this->Form->end() ?>
+
+<hr>
+<table>
+  <thead><tr>
+    <th>氏名</th><th>住所</th>電話番号<th></th>メールアドレス<th>誕生日</th><th>パスワード</th>
+    <th>入会日</th><th>退会日</th>
+  </tr>
+  </thead>
+  <?php foreach($data->toArray() as $obj): ?>
+  <tr>
+    <td><?=h($obj->id) ?></td>
+    <td><a href="<?=$this->Url->build(['controller'=>'Users',
+    'action'=>'edit']); ?>?id=<?=$obj->id ?>"></a></td>
+    <td><?=h($obj->id) ?></td>
+    <td><?=h($obj->user_name) ?></td>
+    <td><?=h($obj->user_address) ?></td>
+    <td><?=h($obj->user_tel) ?></td>
+    <td><?=h($obj->user_email) ?></td>
+    <td><?=h($obj->user_birthday) ?></td>
+    <td><?=h($obj->user_password) ?></td>
+    <td><?=h($obj->user_in) ?></td>
+    <td><?=h($obj->user_out) ?></td>
+    <td><a href="<?=$this->Url->build(['controller'=>'Users',
+    'action'=>'delete']); ?>?id=<?=$obj->id ?>">退会</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>

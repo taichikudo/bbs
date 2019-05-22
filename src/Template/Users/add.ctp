@@ -20,7 +20,7 @@
             echo $this->Form->control('user_tel');
             echo $this->Form->control('user_email');
             echo $this->Form->control('user_birthday');
-            echo $this->Form->hidden('user_password');
+            echo $this->Form->contorl('user_password');
             echo $this->Form->control('user_in');
             echo $this->Form->control('user_out');
         ?>
