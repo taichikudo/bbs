@@ -15,7 +15,7 @@ class RentalController extends AppController
         $this->set('data', $data);
 
       }
-        
+
       //$this->set(compact('myblogs'));
     }
 
@@ -38,6 +38,7 @@ class RentalController extends AppController
           $this->Rental->save($entity);
           $this->set(compact('entity'));
           $this->set(compact('rental'));
+          return $this->redirect(['action' => 'index']);
             // $rental = $this->Rental->patchEntity($rental, $this->request->getData());
                 // $this->set(compact('rental'));
             // if ($this->Rental->save($rental)) {
@@ -59,7 +60,7 @@ class RentalController extends AppController
       $id = $this->request->query['rental_id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
-    }
+      }
 
 public function update(){
   date_default_timezone_set('Asia/Tokyo');

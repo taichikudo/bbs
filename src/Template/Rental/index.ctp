@@ -13,6 +13,7 @@
 <table>
   <thead>
     <tr>
+        <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
       <p>検索結果</p>
 <th>会員ID</th><th>資料ID</th><th>返却期日</th><th>返却日</th><th>備考</th>
     </tr>
@@ -37,4 +38,3 @@
 
 
 </article>
-  <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
