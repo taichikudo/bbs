@@ -6,7 +6,15 @@
 <div><?=$this->Form->text('user_id')?></div>
 <div><?=$this->Form->submit('検索')?></div>
 <?=$this->Form->end()?>
-<p>検索結果</p>
+<?php if(isset($data)) { ?>
+  <h2><?= h($data->title) ?><span class="no">[<?= h($data->id) ?>]</span></h2>
+  <td><?=h($obj->rental_user_id)?></td>
+  <td><?=h($obj->rental_book_id)?></td>
+  <td><?=h($obj->rental_date)?></td>
+  <td><?=h($obj->rental_return)?></td>
+  <td><?=h($obj->rental_etc)?></td>
+<?php } ?>
+<!-- <p>検索結果</p>
   <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">貸出</a></p>
 <hr>
 <table>
@@ -28,4 +36,4 @@
     </tr>
     <?php endforeach; ?>
 
-</table>
+</table> -->
