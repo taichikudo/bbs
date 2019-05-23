@@ -26,8 +26,7 @@ class UsersController extends AppController
         $this->set('user', $user);
     }
 
-    public function search()
-    {
+    public function search_result(){
       if($this->request->is('post')){
         $find = $this->request->data['Users']['find'];
         $condition = ['conditions'=>['name'=>$find]];
@@ -47,7 +46,7 @@ class UsersController extends AppController
 
                 return $this->redirect(['action' => 'result']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('この内容ではご登録できません.'));
         }
         $this->set(compact('user'));
     }

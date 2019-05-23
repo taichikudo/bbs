@@ -15,14 +15,14 @@
     <fieldset>
         <legend><?= __('会員登録') ?></legend>
         <?php
-            echo $this->Form->control('user_name');
-            echo $this->Form->control('user_address');
-            echo $this->Form->control('user_tel');
-            echo $this->Form->control('user_email');
-            echo $this->Form->control('user_birthday');
-            echo $this->Form->contorl('user_password');
-            echo $this->Form->control('user_in');
-            echo $this->Form->control('user_out');
+            echo $this->Form->control('氏名');
+            echo $this->Form->control('住所');
+            echo $this->Form->control('電話番号');
+            echo $this->Form->control('メールアドレス');
+            echo $this->Form->control('生年月日');
+            echo $this->Form->control('パスワード');
+            echo $this->Form->control('入会日');
+            echo $this->Form->control('退会日');
         ?>
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>
