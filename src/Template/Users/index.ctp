@@ -2,7 +2,7 @@
 <?=$this->Form->create(null,
 ['type'=>'post',
 'url'=>['controller'=>'Users',
-'action'=>'search']]) ?>
+'action'=>'search_result']]) ?>
   <div class="">
     会員番号を入力ください
   </div>
