@@ -27,19 +27,30 @@ class RentalController extends AppController
         $this->set('rental', $rental);
     }
 
-    public function add(){
-      $entity = $this ->Rental->newEntity();
-      $this->set('entity',$entity);
-    }
+    public function add()
+    {
+        $rental = $this->Rental->newEntity();
+        if ($this->request->is('post')) {
+          $data = $this->request->data['Rental'];
+          $entity = $this->Rental->newEntity($data);
+          $this->Rental->save($entity);
+          $this->set(compact('entity'));
+          $this->set(compact('rental'));
+            // $rental = $this->Rental->patchEntity($rental, $this->request->getData());
+                // $this->set(compact('rental'));
+            // if ($this->Rental->save($rental)) {
+        //         $this->Flash->success(__('ご登録ありがとうございます.'));
+        //
+        //         return $this->redirect(['action' => 'index']);
+        //     }
+        //     $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        // }
+        // $this->set(compact('rental'));
 
-    public function create(){
-      if ($this->request->is('post')){
-        $data = $this->request->$data['Rental'];
-        $entity = $this->Rental->newEntity($data);
-        $this->Rental->save($entity);
-      }
-      return $this->redirect(['action'=>'index']);
+
     }
+  }
+
 
     public function edit()
     {
