@@ -9,7 +9,7 @@ class UsersController extends AppController
     {
       if($this->request->is('post')){
         $find = $this->request->data['Users']['find'];
-        $condition = ['conditions'=>['name'=>$find]];
+        $condition = ['conditions'=>['user_id'=>$find]];
         $data = $this->Users->find('all',$condition);
       }else{
         $data=$this->Users->find('all');
@@ -26,10 +26,10 @@ class UsersController extends AppController
         $this->set('user', $user);
     }
 
-    public function search_result(){
+    public function searchresult() {
       if($this->request->is('post')){
         $find = $this->request->data['Users']['find'];
-        $condition = ['conditions'=>['name'=>$find]];
+        $condition = ['conditions'=>['user_id'=>$find]];
         $data = $this->Users->find('all',$condition);
       }else{
         $data=$this->Users->find('all');
