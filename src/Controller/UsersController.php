@@ -5,14 +5,11 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
-    public function index()
-    {
+    public function index() {
       if($this->request->is('post')){
         $find = $this->request->data['Users']['find'];
         $condition = ['conditions'=>['user_id'=>$find]];
         $data = $this->Users->find('all',$condition);
-      }else{
-        $data=$this->Users->find('all');
       }
       $this->set(compact('data'));
     }

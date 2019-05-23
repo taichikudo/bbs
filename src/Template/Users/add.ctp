@@ -19,10 +19,10 @@
             echo $this->Form->control('住所');
             echo $this->Form->control('電話番号');
             echo $this->Form->control('メールアドレス');
-            echo $this->Form->control('生年月日');
+            echo $this->Form->control('user_birthday');
             echo $this->Form->control('パスワード');
             echo $this->Form->control('入会日');
-            echo $this->Form->control('退会日');
+            echo $this->Form->control('user_out');
         ?>
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>

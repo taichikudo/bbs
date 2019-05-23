@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
+            <?php foreach ($data as $user): ?>
             <tr>
                 <td><?= $this->Number->format($user->user_id) ?></td>
                 <td><?= h($user->user_name) ?></td>
@@ -30,12 +30,10 @@
                 <td><?= h($user->user_in) ?></td>
                 <td><?= h($user->user_out) ?></td>
                 <td class="actions">
-
-                    <?= $this->Html->link(__('変更'), ['action' => 'edit', $user->id]) ?>
-                    <?= $this->Form->postLink(__('退会'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                    <?= $this->Html->link(__('変更'), ['action' => 'edit', $user->user_id]) ?>
+                    <?= $this->Form->postLink(__('退会'), ['action' => 'delete', $user->user_id], ['confirm' => __('退会してもよろしいですか ？{0}', $user->user_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
-
         </tbody>
     </table>
