@@ -33,20 +33,24 @@ class UsersController extends AppController
       }
       $this->set(compact('data'));
     }
+  
 
-    public function add(){
-        $user = $this->Users->newEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('ご登録ありがとうございます.'));
+    public function add()
+   {
+       $user = $this->Users->newEntity();
+       if ($this->request->is('post')) {
+         $data = $this->request->data['Users'];
+         $entity = $this->Users->newEntity($data);
+         $this->User->save($entity);
+         $this->set(compact('entity'));
+         $this->set(compact('user'));
 
-                return $this->redirect(['action' => 'result']);
-            }
-            $this->Flash->error(__('この内容ではご登録できません.'));
-        }
-        $this->set(compact('user'));
-    }
+      return $this->redirect(['action' => 'result']);
+   }
+ }
+
+
+
 
 public function result() {
   $condition=['order'=>['Users.user_id'=>'desc'],'limit'=>1];
@@ -76,6 +80,11 @@ public function result() {
         }
         $this->set(compact('user'));
     }
+
+    public function remove() {
+
+    }
+
 
     public function delete($user_id = null)
     {

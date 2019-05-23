@@ -2,13 +2,10 @@
 ['type'=>'post',
 'url'=>['controller'=>'Users',
 'action'=>'searchresult']]) ?>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Edit User') ?></legend>
+        <legend><?= __('会員情報変更') ?></legend>
         <?php
             echo $this->Form->control('user_name');
             echo $this->Form->control('user_address');

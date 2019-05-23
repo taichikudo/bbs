@@ -4,26 +4,25 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+
 <div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
+    <?=$this->Form->create($entity,['type'=>'post','url'=>['controller'=>'Users','action'=>'result']])?>
     <fieldset>
         <legend><?= __('会員登録') ?></legend>
-        <?php
-            echo $this->Form->control('氏名');
-            echo $this->Form->control('住所');
-            echo $this->Form->control('電話番号');
-            echo $this->Form->control('メールアドレス');
-            echo $this->Form->control('user_birthday');
-            echo $this->Form->control('パスワード');
-            echo $this->Form->control('入会日');
-            echo $this->Form->control('user_out');
-        ?>
+
+
+
+
+             <p>氏名：<?= $this->Form->text('Users.user_name');?></p>
+            <p>住所：<?=$this->Form->text('Users.user_address');?></p>
+            <p>電話番号：<?= $this->Form->text('Users.user_tel');?></p>
+            <p>メールアドレス：<?=$this->Form->text('Users.user_email');?></p>
+             <p>生年月日：<?=$this->Form->text('Users.user_birthday');?></p>
+             <p>パスワード：<?=$this->Form->text('User.user_password');?></p>
+             <p>入会日：<?=$this->Form->control('Users.user_in');?></p>
+            <p>退会日：<?=$this->Form->control('Users.user_out');?></p>
+
+
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>
     <?= $this->Form->end() ?>
