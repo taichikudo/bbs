@@ -5,18 +5,16 @@ use App\Controller\AppController;
 
 class RentalController extends AppController
 {
-    public function index()
-    {
-        if($this->request->is('post')){
-          $find = $this->request->data['Rental']['find'];
-          $condition = ['conditions'=>['id'=>$find]];
-          $data = $this->Rental->find('all',$condition);
-        }else{
-          $data = $this->Rental->find('all');
-        }
-        $this->set('data',$data);
-    }
-
+  public function index(){
+   $rental = $this->Rental;
+   if($this->request->is('post')){
+     $id = $this->request->getData('id');
+     $this->log($id);
+     $data = $this->Rental->get($id);
+     $this->set('data', $data);
+   }
+   //$this->set(compact('myblogs'));
+ }
     public function view($id = null)
     {
         $rental = $this->Rental->get($id, [

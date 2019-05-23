@@ -3,7 +3,7 @@
 ['type'=>'post',
 'url'=>['controller'=>'Rental',
 'action'=>'index']])?>
-<div><?=$this->Form->text('Rental.find')?></div>
+<div><?=$this->Form->text('user_id')?></div>
 <div><?=$this->Form->submit('検索')?></div>
 <?=$this->Form->end()?>
 <p>検索結果</p>
