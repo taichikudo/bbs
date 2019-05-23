@@ -17,9 +17,9 @@ class UsersController extends AppController
       $this->set(compact('data'));
     }
 
-    public function view($id = null)
+    public function view($user_id = null)
     {
-        $user = $this->Users->get($id, [
+        $user = $this->Users->get($user_id, [
             'contain' => []
         ]);
 
@@ -43,7 +43,7 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('ご登録ありがとうございます.'));
 
                 return $this->redirect(['action' => 'result']);
             }
@@ -53,33 +53,20 @@ class UsersController extends AppController
     }
 
 public function result() {
-  $user_name= $this->request->data['user_name'];
-  $user_address= $this->request->data['user_address'];
-  $user_tel= $this->request->data['user_tel'];
-  $user_email= $this->request->data['user_email'];
-  $user_birthday= $this->request->data['user_birthday'];
-  $user_password= $this->request->data['user_password'];
-  $user_in= $this->request->data['user_in'];
-  $user_out= $this->request->data['user_out'];
+  $condition=['order'=>['Users.user_id'=>'desc'],'limit'=>1];
 
-  $res='ご登録ありがとうございます。'.$user_name.'さん';
-  $value=['message'=>$res];
-  $this->set($value);
-  
+  $users = $this->Users->find('all',$condition);
+  //$user2 = $this->Users->get($user_id);
+  $this->set(compact('users'));
 }
 
 
 
 
-    public function view2()
+
+    public function edit($user_id = null)
     {
-
-
-    }
-
-    public function edit($id = null)
-    {
-        $user = $this->Users->get($id, [
+        $user = $this->Users->get($user_id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -94,10 +81,10 @@ public function result() {
         $this->set(compact('user'));
     }
 
-    public function delete($id = null)
+    public function delete($user_id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
+        $user = $this->Users->get($user_id);
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {

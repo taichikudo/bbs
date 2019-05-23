@@ -14,7 +14,7 @@ class UsersTable extends Table
 
         $this->setTable('users');
         $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('user_id');
 
         $this->hasMany('Rental',[
           'foreinkey'=>'id'
@@ -24,8 +24,8 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
+            ->integer('user_id')
+            ->allowEmptyString('user_id', 'create');
 
         $validator
             ->scalar('user_name')
