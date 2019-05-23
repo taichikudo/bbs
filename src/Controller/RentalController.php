@@ -10,7 +10,8 @@ class RentalController extends AppController
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
         $this->log($rental_user_id);
-        $data = $this->Rental->get($rental_user_id);
+        $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return'=>'']];
+        $data = $this->Rental->find('all',$condition);
         $this->set('data', $data);
       }
       //$this->set(compact('myblogs'));
@@ -42,7 +43,7 @@ class RentalController extends AppController
 
     public function edit()
     {
-      $id = $this->request->query['id'];
+      $id = $this->request->query['rental_id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
     }
@@ -50,7 +51,7 @@ class RentalController extends AppController
 public function update(){
   if ($this->request->is('post')){
     $data = $this->request->data['Rental'];
-    $entity = $this->Rental->get($data['id']);
+    $entity = $this->Rental->get($data['rental_id']);
     $this->Rental->patchEntity($entity,$data);
     $this->Rental->save($entity);
   }

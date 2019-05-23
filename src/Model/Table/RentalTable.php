@@ -14,7 +14,8 @@ class RentalTable extends Table
 
         $this->setTable('rental');
         $this->setDisplayField('id');
-        $this->setPrimaryKey('rental_user_id');
+        $this->setPrimaryKey('rental_id');
+
 
 $this->belongsTo('Users',[
   'foreignKey'=>'user_id'
