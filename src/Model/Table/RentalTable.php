@@ -26,29 +26,30 @@ $this->belongsTo('Bookstate',[
 
     }
 
-    // public function validationDefault(Validator $validator)
-    // {
-    //     $validator
-    //         ->integer('id')
-    //         ->allowEmptyString('id', 'create');
-    //
-    //     $validator
-    //         ->date('rental_date')
-    //         ->requirePresence('rental_date', 'create')
-    //         ->allowEmptyDate('rental_date', false);
-    //
-    //     $validator
-    //         ->date('rental_return')
-    //         ->requirePresence('rental_return', 'create')
-    //         ->allowEmptyDate('rental_return', false);
-    //
-    //     $validator
-    //         ->scalar('rental_etc')
-    //         ->maxLength('rental_etc', 200)
-    //         ->requirePresence('rental_etc', 'create')
-    //         ->allowEmptyString('rental_etc', false);
-    //
-    //     return $validator;
-    // }
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->integer('rental_id')
+            ->allowEmptyString('rental_id', 'create');
+
+        $validator
+            ->scalar('rental_date')
+            ->requirePresence('rental_date', 'create')
+            ->allowEmptyDate('rental_date', false);
+
+        $validator
+            ->scalar('rental_return')
+
+            ->requirePresence('rental_return', 'create')
+            ->allowEmptyDate('rental_return', true);
+
+        $validator
+            ->scalar('rental_etc')
+            ->maxLength('rental_etc', 200)
+            ->requirePresence('rental_etc', 'create')
+            ->allowEmptyString('rental_etc', true);
+
+        return $validator;
+    }
 
   }

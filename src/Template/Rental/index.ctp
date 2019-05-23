@@ -8,7 +8,7 @@
 <div><?=$this->Form->submit('検索')?></div>
 <?=$this->Form->end()?>
 
-  <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">貸出</a></p>
+
 <hr>
 <table>
   <thead>
@@ -37,3 +37,4 @@
 
 
 </article>
+  <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>

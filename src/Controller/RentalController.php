@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\I18n\Time;
 class RentalController extends AppController
 {
     public function index(){
@@ -13,7 +13,9 @@ class RentalController extends AppController
         $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return'=>'']];
         $data = $this->Rental->find('all',$condition);
         $this->set('data', $data);
+
       }
+        
       //$this->set(compact('myblogs'));
     }
 
@@ -60,10 +62,12 @@ class RentalController extends AppController
     }
 
 public function update(){
+  date_default_timezone_set('Asia/Tokyo');
   if ($this->request->is('post')){
     $data = $this->request->data['Rental'];
     $entity = $this->Rental->get($data['rental_id']);
     $this->Rental->patchEntity($entity,$data);
+    $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
   }
   return $this->redirect(['action'=>'index']);

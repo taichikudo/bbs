@@ -10,6 +10,7 @@
     <fieldset>
         <legend><?= __('Add Rental') ?></legend>
         <?php
+
             echo $this->Form->text('Rental.rental_user_id');
             echo $this->Form->text('Rental.rental_book_id');
             echo $this->Form->text('Rental.rental_date');
