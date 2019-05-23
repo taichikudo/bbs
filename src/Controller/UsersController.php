@@ -25,15 +25,17 @@ class UsersController extends AppController
 
     public function searchresult() {
       if($this->request->is('post')){
-        $find = $this->request->data['Users']['find'];
-        $condition = ['conditions'=>['user_id'=>$find]];
+        $data = $this->request->data['Users']['id'];
+        $entity=$this->Users->get($data);
+        $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
       }else{
         $data=$this->Users->find('all');
       }
       $this->set(compact('data'));
     }
-  
+
+
 
     public function add()
    {
@@ -74,12 +76,14 @@ public function result() {
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+              //  return $this->redirect(['action' => 'searchresult']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
     }
+
+
 
     public function remove() {
 

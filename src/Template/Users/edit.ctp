@@ -7,6 +7,7 @@
     <fieldset>
         <legend><?= __('会員情報変更') ?></legend>
         <?php
+            echo $this->Form->hidden('user_id');
             echo $this->Form->control('user_name');
             echo $this->Form->control('user_address');
             echo $this->Form->control('user_tel');
