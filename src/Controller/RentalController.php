@@ -5,16 +5,18 @@ use App\Controller\AppController;
 
 class RentalController extends AppController
 {
-  public function index(){
-   $rental = $this->Rental;
-   if($this->request->is('post')){
-     $id = $this->request->getData('id');
-     $this->log($id);
-     $data = $this->Rental->get($id);
-     $this->set('data', $data);
-   }
-   //$this->set(compact('myblogs'));
- }
+    public function index(){
+      $rental = $this->Rental;
+      if($this->request->is('post')){
+        $rental_user_id = $this->request->getData('rental_user_id');
+        $this->log($rental_user_id);
+        $data = $this->Rental->get($rental_user_id);
+        $this->set('data', $data);
+      }
+      //$this->set(compact('myblogs'));
+    }
+
+
     public function view($id = null)
     {
         $rental = $this->Rental->get($id, [
@@ -25,7 +27,7 @@ class RentalController extends AppController
     }
 
     public function add(){
-      $entity = $this->Rental->newEntity();
+      $entity = $this ->Rental->newEntity();
       $this->set('entity',$entity);
     }
 
