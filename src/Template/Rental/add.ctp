@@ -1,5 +1,5 @@
-<?php if(isset($data)){ ?><?php
-} ?>
+<?php if(isset($data)){ ?>
+
   <?=$this->Form->create($entity,['type'=>'post','url'=>['controller'=>'Rental','action'=>'add']])?>
     <fieldset>
         <legend><?= __('Add Rental') ?></legend>
