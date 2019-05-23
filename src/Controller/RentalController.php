@@ -35,10 +35,11 @@ class RentalController extends AppController
         if ($this->request->is('post')) {
           $data = $this->request->data['Rental'];
           $entity = $this->Rental->newEntity($data);
+            $entity->rental_date = new Time(date('Y-m-d'));
           $this->Rental->save($entity);
           $this->set(compact('entity'));
           $this->set(compact('rental'));
-          return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
             // $rental = $this->Rental->patchEntity($rental, $this->request->getData());
                 // $this->set(compact('rental'));
             // if ($this->Rental->save($rental)) {

@@ -35,7 +35,7 @@ $this->belongsTo('Bookstate',[
         $validator
             ->scalar('rental_date')
             ->requirePresence('rental_date', 'create')
-            ->allowEmptyDate('rental_date', false);
+            ->allowEmptyDate('rental_date', true);
 
         $validator
             ->scalar('rental_return')

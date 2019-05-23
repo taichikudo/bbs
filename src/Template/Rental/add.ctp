@@ -7,8 +7,8 @@
 
             echo $this->Form->text('Rental.rental_user_id');
             echo $this->Form->text('Rental.rental_book_id');
-            echo $this->Form->text('Rental.rental_date');
-            echo $this->Form->text('Rental.rental_return');
+            echo $this->Form->hidden('Rental.rental_date');
+            echo $this->Form->hidden('Rental.rental_return');
             echo $this->Form->text('Rental.rental_etc');
 
 
