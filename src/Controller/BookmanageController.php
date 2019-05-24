@@ -35,13 +35,13 @@
         // $bookstate = $this->paginate('Bookstate',[
         //   'limit' => 5
         // ]);
-    }else{
-      $bookinfo = $this->paginate('Bookinfo',[
-        'limit' => 5
-      ]);
-      $bookstate = $this->paginate('Bookstate',[
-        'limit' => 5
-      ]);
+    // }else{
+    //   $bookinfo = $this->paginate('Bookinfo',[
+    //     'limit' => 5
+    //   ]);
+    //   $bookstate = $this->paginate('Bookstate',[
+    //     'limit' => 5
+    //   ]);
     }
     $this->set(compact('bookinfo'));
     $this->set(compact('bookstate'));

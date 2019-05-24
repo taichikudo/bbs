@@ -21,11 +21,11 @@
     <fieldset>
         <legend><?= __('Edit Bookstate') ?></legend>
         <?php
-            echo $this->Form->control('bookstate_isbn');
-            echo $this->Form->control('bookstate_name');
-            echo $this->Form->control('bookstate_in');
+            echo $this->Form->hidden('bookstate_isbn');
+            echo $this->Form->hidden('bookstate_name');
+            echo $this->Form->hidden('bookstate_in');
             echo $this->Form->control('bookstate_out');
-            echo $this->Form->control('bookstate_etc');
+            echo $this->Form->hidden('bookstate_etc');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

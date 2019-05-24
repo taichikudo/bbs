@@ -7,6 +7,9 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
+
+    <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
+        'action'=>'add']); ?>">新規目録追加</a></p>
     <div class="search">
       <h1>ISBN検索</h1>
       <?=$this->Form->create(null,
@@ -17,6 +20,8 @@
       <div class="search_form"><?=$this->Form->submit('検索')?></div>
       <?=$this->Form->end()?>
     </div>
+
+<?php if(isset($bookstate)&&isset($bookinfo)){ ?>
     <h1>検索結果</h1>
     <hr>
     <h2>資料目録</h2>
@@ -33,7 +38,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($bookinfo as $bookinfo): ?>
+          <?php if(isset($bookinfo)){?>
+            <?php foreach ($bookinfo->toArray() as $bookinfo): ?>
             <tr>
                 <td><?= h($bookinfo->bookinfo_isbn) ?></td>
                 <td><?= h($bookinfo->bookinfo_bookname) ?></td>
@@ -48,6 +54,7 @@
                 </td>
             </tr>
             <?php endforeach; ?>
+          <?php } ?>
         </tbody>
     </table>
 
@@ -65,6 +72,7 @@
             </tr>
         </thead>
         <tbody>
+          <?php if(isset($bookstate)){?>
             <?php foreach ($bookstate as $bookstate): ?>
             <tr>
                 <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
@@ -74,14 +82,17 @@
                 <td><?= h($bookstate->bookstate_out) ?></td>
                 <td><?= h($bookstate->bookstate_etc) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bookstate->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bookstate->id]) ?>
+                    <?= $this->Html->link(__(''), ['action' => 'view', $bookstate->id]) ?>
+                    <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookstate->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookstate->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
+            <?php } ?>
         </tbody>
     </table>
     <hr>
+<?php } ?>
+
   </body>
 </html>

@@ -53,11 +53,20 @@ class BookinfoController extends AppController
             if ($this->Bookinfo->save($bookinfo)) {
                 $this->Flash->success(__('The bookinfo has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'result',$bookinfo['bookinfo_isbn']]);
             }
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }
         $this->set(compact('bookinfo'));
+    }
+    public function result($isbn=null){
+
+      $condition=['conditions'=>['Bookinfo.bookinfo_isbn'=>$isbn]];
+
+  $bookinfo = $this->Bookinfo->find('all',$condition);
+  //$user2 = $this->Users->get($user_id);
+  $this->set(compact('bookinfo'));
+
     }
 
     /**

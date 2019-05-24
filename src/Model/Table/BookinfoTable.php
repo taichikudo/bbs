@@ -38,7 +38,6 @@ class BookinfoTable extends Table
           'foreignkey' => 'bookinfo_isbn',
         ]);
     }
-
     /**
      * Default validation rules.
      *
