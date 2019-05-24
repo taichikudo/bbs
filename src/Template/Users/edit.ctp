@@ -14,7 +14,7 @@
             echo $this->Form->control('user_birthday');
             echo $this->Form->control('user_password');
             echo $this->Form->control('user_in');
-            echo $this->Form->control('user_out');
+            echo $this->Form->hidden('user_out');
         ?>
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>
