@@ -26,7 +26,7 @@ class Bookinfo extends Entity
      * @var array
      */
     protected $_accessible = [
-        'bookinfo_isbn' => true,
+        // 'bookinfo_isbn' => true,
         'bookinfo_bookname' => true,
         'bookinfo_code' => true,
         'bookinfo_auther' => true,

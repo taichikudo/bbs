@@ -31,8 +31,8 @@ class BookstateTable extends Table
         parent::initialize($config);
 
         $this->setTable('bookstate');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setDisplayField('bookstate_id');
+        $this->setPrimaryKey('bookstate_id');
     }
 
     /**
@@ -44,8 +44,8 @@ class BookstateTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
+            ->integer('bookstate_id')
+            ->allowEmptyString('bookstate_id', 'create');
 
         $validator
             ->scalar('bookstate_isbn')
