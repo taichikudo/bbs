@@ -3,6 +3,7 @@
 <h4>会員情報</h4>
 
 <table cellpadding="0" cellspacing="0">
+        <?php foreach ($data as $user): ?>
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('会員番号') ?></th>
@@ -14,11 +15,15 @@
                 <th scope="col"><?= $this->Paginator->sort('パスワード') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('入会日') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('退会日') ?></th>
+                <?php
+                  if($user->user_out===null){
+                 ?>
                 <th scope="col" class="actions"><?= __('メニュー') ?></th>
+                <?php } ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data as $user): ?>
+
             <tr>
                 <td><?= $this->Number->format($user->user_id) ?></td>
                 <td><?= h($user->user_name) ?></td>
@@ -29,10 +34,14 @@
                 <td><?= h($user->user_password) ?></td>
                 <td><?= h($user->user_in) ?></td>
                 <td><?= h($user->user_out) ?></td>
+                <?php
+                  if($user->user_out===null){
+                 ?>
                 <td class="actions">
                     <?= $this->Html->link(__('変更'), ['action' => 'edit', $user->user_id]) ?>
                     <?= $this->Html->Link(__('退会'), ['action' => 'remove', $user->user_id]) ?>
                 </td>
+              <?php } ?>
             </tr>
             <?php endforeach; ?>
         </tbody>

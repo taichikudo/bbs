@@ -37,8 +37,7 @@ class UsersController extends AppController
         $condition = ['conditions'=>['user_id'=>$user_id]];
         $data = $this->Users->find('all',$condition);
 
-      }
-      else{
+      }else{
 
         $data=$this->Users->find('all');
       }
