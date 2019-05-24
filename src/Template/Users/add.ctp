@@ -1,12 +1,10 @@
 <?php
 
 ?>
-
 <div class="users form large-9 medium-8 columns content">
     <?=$this->Form->create($entity,['type'=>'post','url'=>['controller'=>'Users','action'=>'add']])?>
     <fieldset>
         <legend><?= __('会員登録') ?></legend>
-
 
         <p>名前</p>
         <?php echo $this->Form->text('Users.user_name');?>
@@ -23,9 +21,6 @@
         <p>入会日</p>
         <?php echo $this->Form->text('Users.user_in');?>
         <?php echo $this->Form->hidden('Users.user_out');?>
-
-
-
 
     </fieldset>
     <?= $this->Form->button(__('送信')) ?>

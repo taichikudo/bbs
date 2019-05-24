@@ -5,6 +5,7 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
+
     public function index() {
       if($this->request->is('post')){
         $find = $this->request->data['user_id'];
@@ -26,7 +27,7 @@ class UsersController extends AppController
     public function searchresult($user_id = null) {
       if($this->request->is('post')){
         $data = $this->request->data['user_id'];
-        $entity=$this->Users->get($data['user_id']);
+        $entity=$this->Users->get($data);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
 
