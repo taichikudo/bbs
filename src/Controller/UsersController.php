@@ -51,12 +51,16 @@ class UsersController extends AppController
        $user = $this->Users->newEntity();
        if ($this->request->is('post')) {
          $data = $this->request->data['Users'];
-         $entity = $this->Users->newEntity($data);
-         $this->User->save($entity);
+         $entity = $this->Users->patchEntity($user,$data);
+        if($this->Users->save($entity)) {
+           return $this->redirect(['action' => 'result']);
+         } else{
+             $this->Flash->error(__('The user could not be created. Please, try again.'));
+         }
          $this->set(compact('entity'));
          $this->set(compact('user'));
 
-      return $this->redirect(['action' => 'result']);
+
    }
  }
 

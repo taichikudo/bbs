@@ -15,6 +15,6 @@ class User extends Entity
         'user_in' => true,
         'user_out' => true,
         'rental'=>true,
-        
+
     ];
 }

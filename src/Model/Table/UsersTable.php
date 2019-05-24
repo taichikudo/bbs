@@ -54,7 +54,7 @@ class UsersTable extends Table
         $validator
             ->date('user_birthday')
             ->requirePresence('user_birthday', 'create')
-            ->allowEmptyDate('user_birthday', false);
+            ->allowEmptyDate('user_birthday', true);
 
         $validator
             ->scalar('user_password')
@@ -70,7 +70,7 @@ class UsersTable extends Table
         $validator
             ->date('user_out')
             ->requirePresence('user_out', 'create')
-            ->allowEmptyDate('user_out', false);
+            ->allowEmptyDate('user_out', true);
 
         return $validator;
     }
