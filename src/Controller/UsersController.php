@@ -84,12 +84,12 @@ public function result() {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('変更完了しました.'));
 
                   // return $this->redirect($url);
               return $this->redirect(['action' => 'searchresult',$user['user_id']]);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('変更に失敗しました. もう一度入力してください.'));
         }
         $this->set(compact('user'));
         $this->set('entity',$user);
@@ -98,23 +98,23 @@ public function result() {
 
 
 
-    public function remove() {
-      $id = $this->request->query['user_id'];
+    public function remove($user_id=null)
+    {
+
       $entity = $this->Users->get($user_id);
-      $this->set('entity',$entity);
-
-
+      $this->set(compact('entity'));
     }
 
     public function removefinish() {
       if ($this->request->is('post')){
-   $data = $this->request->data['Users'];
-   $entity = $this->Users->get($data['user_id']);
-   $this->Users->patchEntity($entity,$data);
-   $entity->user_out = new Time(date('Y-m-d'));
-   $this->Users->save($entity);
+        $data = $this->request->data['Users'];
+        $entity = $this->Users->get($data['user_id']);
+        $this->Users->patchEntity($entity,$data);
+        date_default_timezone_set('Asia/Tokyo');
+        $entity->user_out = date('Y-m-d');
+        $this->Users->save($entity);
  }
- return $this->redirect(['action'=>'index']);
+ // return $this->redirect(['action'=>'index']);
 
 
     }
