@@ -3,7 +3,7 @@
     'url'=>['controller'=>'Rental',
     'action'=>'update']]) ?>
 <?=$this->Form->hidden('Rental.rental_id')?>
-<div>返却しますか？</div>
+<h2>返却しますか？</h2>
 
 
 

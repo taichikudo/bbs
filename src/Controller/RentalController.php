@@ -10,16 +10,21 @@ class RentalController extends AppController
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
         $this->log($rental_user_id);
-        $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return'=>'']];
+        // $condition = ['conditions'=>['and'=>['rental_user_id'=>$rental_user_id,'rental_return'=>NULL]]];
+        $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return IS NULL']];
         $data = $this->Rental->find('all',$condition);
         $this->set('data', $data);
+        $bbs = 0;
+        $this->set(compact('bbs'));
 
       }
 
       //$this->set(compact('myblogs'));
     }
 
+public function result(){
 
+}
     public function view($id = null)
     {
         $rental = $this->Rental->get($id, [
@@ -72,7 +77,7 @@ public function update(){
     $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
   }
-  return $this->redirect(['action'=>'index']);
+  return $this->redirect(['action'=>'result']);
 }
 
     public function delete($id = null)

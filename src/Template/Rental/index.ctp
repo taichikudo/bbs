@@ -13,15 +13,15 @@
 <table>
   <thead>
     <tr>
-        <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
-      <p>検索結果</p>
-<th>会員ID</th><th>資料ID</th><th>返却期日</th><th>返却日</th><th>備考</th>
+
+      <h3>検索結果</h3>
+<th>会員ID</th><th>資料ID</th><th>貸出日</th><th>返却日</th><th>備考</th>
     </tr>
   </thead>
 <?php if(isset($data)) { ?>
   <?php foreach($data->toArray() as $obj): ?>
 <tr>
-
+  <?php $bbs++; ?>
   <td><?= h($obj->rental_user_id) ?></td>
   <td><?= h($obj->rental_book_id) ?></td>
   <td><?= h($obj->rental_date) ?></td>
@@ -32,6 +32,17 @@
 </tr>
 <?php endforeach; ?>
 <?php } ?>
+<?php
+if(isset($bbs)){
+$limit = 5 - $bbs;
+if($bbs>=5){
+  echo 'これ以上の貸し出しはできません';
+
+}else{
+  echo $limit .'冊借りることができます';?>
+    <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
+
+<?php  }}?>
 
 
 
