@@ -1,9 +1,8 @@
-<?=$this->Form->create(null,
+<?=$this->Form->create($entity,
 ['type'=>'post',
 'url'=>['controller'=>'Users',
-'action'=>'searchresult']]) ?>
+'action'=>'edit']]) ?>
 <div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('会員情報変更') ?></legend>
         <?php

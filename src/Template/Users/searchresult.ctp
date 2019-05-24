@@ -31,7 +31,7 @@
                 <td><?= h($user->user_out) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('変更'), ['action' => 'edit', $user->user_id]) ?>
-                    <?= $this->Form->postLink(__('退会'), ['action' => 'delete', $user->user_id], ['confirm' => __('退会してもよろしいですか ？{0}', $user->user_id)]) ?>
+                    <?= $this->Html->Link(__('退会'), ['action' => 'remove', $user->user_id]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

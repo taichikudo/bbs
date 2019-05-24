@@ -7,7 +7,7 @@ class UsersController extends AppController
 {
     public function index() {
       if($this->request->is('post')){
-        $find = $this->request->data['Users']['find'];
+        $find = $this->request->data['user_id'];
         $condition = ['conditions'=>['user_id'=>$find]];
         $data = $this->Users->find('all',$condition);
       }
@@ -23,13 +23,22 @@ class UsersController extends AppController
         $this->set('user', $user);
     }
 
-    public function searchresult() {
+    public function searchresult($user_id = null) {
       if($this->request->is('post')){
-        $data = $this->request->data['Users']['id'];
-        $entity=$this->Users->get($data);
+        $data = $this->request->data['user_id'];
+        $entity=$this->Users->get($data['user_id']);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
-      }else{
+
+
+      }elseif(!$user_id==null){
+
+        $condition = ['conditions'=>['user_id'=>$user_id]];
+        $data = $this->Users->find('all',$condition);
+
+      }
+      else{
+
         $data=$this->Users->find('all');
       }
       $this->set(compact('data'));
@@ -71,21 +80,42 @@ public function result() {
         $user = $this->Users->get($user_id, [
             'contain' => []
         ]);
+          // $url=$this->referer();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-              //  return $this->redirect(['action' => 'searchresult']);
+                  // return $this->redirect($url);
+              return $this->redirect(['action' => 'searchresult',$user['user_id']]);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
+        $this->set('entity',$user);
     }
 
 
 
+
     public function remove() {
+      $id = $this->request->query['user_id'];
+      $entity = $this->Users->get($user_id);
+      $this->set('entity',$entity);
+
+
+    }
+
+    public function removefinish() {
+      if ($this->request->is('post')){
+   $data = $this->request->data['Users'];
+   $entity = $this->Users->get($data['user_id']);
+   $this->Users->patchEntity($entity,$data);
+   $entity->user_out = new Time(date('Y-m-d'));
+   $this->Users->save($entity);
+ }
+ return $this->redirect(['action'=>'index']);
+
 
     }
 
