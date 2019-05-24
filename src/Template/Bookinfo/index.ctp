@@ -15,7 +15,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_code') ?></th>
@@ -28,7 +27,6 @@
         <tbody>
             <?php foreach ($bookinfo as $bookinfo): ?>
             <tr>
-                <td><?= $this->Number->format($bookinfo->id) ?></td>
                 <td><?= h($bookinfo->bookinfo_isbn) ?></td>
                 <td><?= h($bookinfo->bookinfo_bookname) ?></td>
                 <td><?= $this->Number->format($bookinfo->bookinfo_code) ?></td>

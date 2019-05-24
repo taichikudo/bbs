@@ -27,7 +27,7 @@
         <tbody>
             <?php foreach ($bookstate as $bookstate): ?>
             <tr>
-                <td><?= $this->Number->format($bookstate->id) ?></td>
+                <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
                 <td><?= h($bookstate->bookstate_isbn) ?></td>
                 <td><?= h($bookstate->bookstate_name) ?></td>
                 <td><?= h($bookstate->bookstate_in) ?></td>
