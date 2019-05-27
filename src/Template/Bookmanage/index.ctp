@@ -10,6 +10,8 @@
 
     <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
         'action'=>'add']); ?>">新規目録追加</a></p>
+        <p><a href="<?=$this->Url->build(['controller'=>'Bookstate',
+            'action'=>'add']); ?>">新規台帳追加</a></p>
     <div class="search">
       <h1>ISBN検索</h1>
       <?=$this->Form->create(null,
@@ -49,7 +51,7 @@
                 <td><?= h($bookinfo->bookinfo_startday) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?>
-                
+
                 </td>
             </tr>
             <?php endforeach; ?>
