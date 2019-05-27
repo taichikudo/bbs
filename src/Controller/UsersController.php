@@ -55,7 +55,7 @@ class UsersController extends AppController
         if($this->Users->save($entity)) {
            return $this->redirect(['action' => 'result']);
          } else{
-             $this->Flash->error(__('The user could not be created. Please, try again.'));
+             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください'));
          }
          $this->set(compact('entity'));
          $this->set(compact('user'));
@@ -104,7 +104,17 @@ public function result() {
 
     public function remove($user_id=null)
     {
-
+    if($this->request->is('post')) {
+        $user3=$this->request->data['Users']['user_id'];
+      $condition=array('conditions'=>array('and'=>array('Rental.rental_user_id' => $user3,'Rental.rental_return IS'=> null)));
+      $data=$this->Users->Rental->find('all',$condition);
+      if (count($data)==0) {
+        return $this->redirect(['action'=>'removefinish']);
+      }else{
+        return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
+        // return $this->redirect(['action'=>'add']);
+      }
+    }
       $entity = $this->Users->get($user_id);
       $this->set(compact('entity'));
     }
