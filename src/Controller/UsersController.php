@@ -103,13 +103,13 @@ public function result() {
     public function remove($user_id=null)
     {
     if($this->request->is('post')) {
-      $user3=$this->request->data['Users']['user_id'];
-      $condition=[
+      $user3 = $this->request->data['Users']['user_id'];
+      $condition = [
         'conditions'=>[
           'and'=>[
             'rental_user_id' => $user3,
             'rental_return IS'=> null]]];
-      $entity=$this->Users->Rental->find('all',$condition);
+      $entity = $this->Users->Rental->find('all',$condition);
       if ($entity->count() === 0) {
         return $this->redirect(['action'=>'removefinish']);
       }else{
