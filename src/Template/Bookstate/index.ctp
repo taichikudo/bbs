@@ -28,9 +28,7 @@
                 <td><?= h($bookstate->bookstate_out) ?></td>
                 <td><?= h($bookstate->bookstate_etc) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bookstate->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bookstate->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookstate->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookstate->id)]) ?>
+                  
                 </td>
             </tr>
             <?php endforeach; ?>

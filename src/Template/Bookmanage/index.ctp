@@ -48,9 +48,8 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h($bookinfo->bookinfo_startday) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bookinfo->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bookinfo->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookinfo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookinfo->id)]) ?>
+                    <?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?>
+                
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -82,9 +81,9 @@
                 <td><?= h($bookstate->bookstate_out) ?></td>
                 <td><?= h($bookstate->bookstate_etc) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__(''), ['action' => 'view', $bookstate->id]) ?>
+                    <?= $this->Html->link(__('変更'), ['controller'=>'bookstate','action' => 'edit2', $bookstate->bookstate_id]) ?>
                     <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookstate->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookstate->id)]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>

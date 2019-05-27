@@ -34,10 +34,7 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h($bookinfo->bookinfo_startday) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bookinfo->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bookinfo->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookinfo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookinfo->id)]) ?>
-                </td>
+                  
             </tr>
             <?php endforeach; ?>
         </tbody>

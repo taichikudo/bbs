@@ -70,32 +70,67 @@ class BookstateController extends AppController
 
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Bookstate id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
-      // $id = $this->request->query['bookstate_id'];
+        $bookstate = $this->Bookstate->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+            if ($this->Bookstate->save($bookstate)) {
+                $this->Flash->success(__('The bookinfo has been saved.'));
 
-      $entity = $this->Bookstate->get($id);
-      $this->set('entity',$entity);
-      $this->set('bookstate',$entity);
+                return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+            }
+            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+        }
+        $this->set(compact('bookstate'));
+    }
+    public function edit2($id = null)
+    {
+        $bookstate = $this->Bookstate->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+            if ($this->Bookstate->save($bookstate)) {
+                $this->Flash->success(__('The bookinfo has been saved.'));
+
+                return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+            }
+            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+        }
+        $this->set(compact('bookstate'));
     }
 
-    public function update(){
-      if ($this->request->is('post')){
-        $data = $this->request->data['Bookstate'];
-        $entity = $this->Bookstate->get($data['rental_id']);
-        $this->Rental->patchEntity($entity,$data);
-        $entity->rental_return = new Time(date('Y-m-d'));
-        $this->Rental->save($entity);
-      }
-      return $this->redirect(['action'=>'result']);
+    public function edit_result($bookstate_id=null){
+
+      $condition=['conditions'=>['Bookstate.bookstate_id'=>$bookstate_id]];
+
+    $bookstate = $this->Bookstate->find('all',$condition);
+
+    $this->set(compact('bookstate'));
+
     }
+    // public function edit($id = null)
+    // {
+    //   // $id = $this->request->query['bookstate_id'];
+    //
+    //   $entity = $this->Bookstate->get($id);
+    //   $this->set('entity',$entity);
+    //   $this->set('bookstate',$entity);
+    // }
+    //
+    // public function update(){
+    //   if ($this->request->is('post')){
+    //     $data = $this->request->data['Bookstate'];
+    //     $entity = $this->Bookstate->get($data['rental_id']);
+    //     $this->Rental->patchEntity($entity,$data);
+    //     $entity->rental_return = new Time(date('Y-m-d'));
+    //     $this->Rental->save($entity);
+    //   }
+    //   return $this->redirect(['action'=>'result']);
+    // }
 
     /**
      * Delete method
