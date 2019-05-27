@@ -3,7 +3,8 @@
 <h4>会員情報</h4>
 
 <table cellpadding="0" cellspacing="0">
-        <?php foreach ($data as $user): ?>
+        <?php if($data->count()!==0){
+          foreach ($data as $user): ?>
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('会員番号') ?></th>
@@ -20,6 +21,7 @@
                  ?>
                 <th scope="col" class="actions"><?= __('メニュー') ?></th>
                 <?php } ?>
+
             </tr>
         </thead>
         <tbody>
@@ -43,6 +45,9 @@
                 </td>
               <?php } ?>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach;
+          }?>
+
         </tbody>
     </table>
+<h6><?= $this->Html->link(__('前のページに戻る'), ['action' => 'index']) ?></h6>

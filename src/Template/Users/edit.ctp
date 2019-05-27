@@ -11,9 +11,11 @@
             echo $this->Form->control('user_address');
             echo $this->Form->control('user_tel');
             echo $this->Form->control('user_email');
-            echo $this->Form->control('user_birthday');
+            echo $this->Form->control('user_birthday',['minYear'=>date('Y')-100]);
             echo $this->Form->control('user_password');
-            echo $this->Form->control('user_in');
+            echo $this->Form->hidden('user_in.year');
+            echo $this->Form->hidden('user_in.month');
+            echo $this->Form->hidden('user_in.day');
             echo $this->Form->hidden('user_out');
         ?>
     </fieldset>

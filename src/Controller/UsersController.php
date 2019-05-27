@@ -27,9 +27,12 @@ class UsersController extends AppController
     public function searchresult($user_id = null) {
       if($this->request->is('post')){
         $data = $this->request->data['user_id'];
-        $entity=$this->Users->get($data);
+        $id = $this->Users->get($data);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
+        // if($data->count()===0){
+        //   return $this->redirect(['action'=>'searchresult']);
+        // }
       }elseif(!$user_id==null){
         $condition = ['conditions'=>['user_id'=>$user_id]];
         $data = $this->Users->find('all',$condition);
@@ -100,17 +103,23 @@ public function result() {
     public function remove($user_id=null)
     {
     if($this->request->is('post')) {
-        $user3=$this->request->data['Users']['user_id'];
-      $condition=array('conditions'=>array('and'=>array('Rental.rental_user_id' => $user3,'Rental.rental_return IS'=> null)));
-      $data=$this->Users->Rental->find('all',$condition);
-      if (count($data)==0) {
+      $user3=$this->request->data['Users']['user_id'];
+      $condition=[
+        'conditions'=>[
+          'and'=>[
+            'rental_user_id' => $user3,
+            'rental_return IS'=> null]]];
+      $entity=$this->Users->Rental->find('all',$condition);
+      if ($entity->count() === 0) {
         return $this->redirect(['action'=>'removefinish']);
       }else{
-        return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
-        // return $this->redirect(['action'=>'add']);
+        // return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
+        return $this->redirect(['action'=>'add']);
       }
-    }
+    }else{
       $entity = $this->Users->get($user_id);
+    }
+
       $this->set(compact('entity'));
     }
 

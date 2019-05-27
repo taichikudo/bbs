@@ -35,9 +35,9 @@ class RentalTable extends Table
 
         $this->setTable('rental');
         $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('rental_id');
 
-        $this->belongsTo('RentalUsers', [
+        $this->belongsTo('Users', [
             'foreignKey' => 'rental_user_id',
             'joinType' => 'INNER'
         ]);
@@ -56,8 +56,8 @@ class RentalTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
+            ->integer('rental_user_id')
+            ->allowEmptyString('rental_user_id', 'create');
 
         $validator
             ->date('rental_date')

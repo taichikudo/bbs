@@ -17,7 +17,8 @@ class UsersTable extends Table
         $this->setPrimaryKey('user_id');
 
         $this->hasMany('Rental',[
-          'foreinkey'=>'rental_user_id'
+          'foreignKey'=>'rental_user_id',
+          'joinType'=>'INNER'
         ]);
     }
 
@@ -25,6 +26,7 @@ class UsersTable extends Table
     {
         $validator
             ->integer('user_id')
+            ->numeric('user_id')
             ->allowEmptyString('user_id', 'create');
 
         $validator
