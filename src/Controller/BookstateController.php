@@ -79,12 +79,21 @@ class BookstateController extends AppController
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
             if ($this->Bookstate->save($bookstate)) {
                 $this->Flash->success(__('The bookinfo has been saved.'));
-
-                return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+return $this->redirect(['action' => 'result2',$bookstate['bookstate_id']]);
             }
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }
         $this->set(compact('bookstate'));
+
+    }
+    public function result2($bookstate_id=null){
+
+      $condition=['conditions'=>['Bookstate.bookstate_id'=>$bookstate_id]];
+
+    $bookstate = $this->Bookstate->find('all',$condition);
+
+    $this->set(compact('bookstate'));
+
     }
     public function edit2($id = null)
     {
@@ -95,15 +104,14 @@ class BookstateController extends AppController
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
             if ($this->Bookstate->save($bookstate)) {
                 $this->Flash->success(__('The bookinfo has been saved.'));
-
-                return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+return $this->redirect(['action' => 'result3',$bookstate['bookstate_id']]);
             }
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }
         $this->set(compact('bookstate'));
-    }
 
-    public function edit_result($bookstate_id=null){
+    }
+    public function result3($bookstate_id=null){
 
       $condition=['conditions'=>['Bookstate.bookstate_id'=>$bookstate_id]];
 
@@ -112,6 +120,41 @@ class BookstateController extends AppController
     $this->set(compact('bookstate'));
 
     }
+
+    // public function edit2($id = null)
+    // {
+    //     $bookstate = $this->Bookstate->get($id, [
+    //         'contain' => []
+    //     ]);
+    //     if ($this->request->is(['patch', 'post', 'put'])) {
+    //         $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+    //         if ($this->Bookstate->save($bookstate)) {
+    //             $this->Flash->success(__('The bookinfo has been saved.'));
+    //
+    //             return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+    //         }
+    //         $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+    //     }
+    //     $this->set(compact('bookstate'));
+    // }
+    // public function edit3($id = null)
+    // {
+    //     $bookstate = $this->Bookstate->get($id, [
+    //         'contain' => []
+    //     ]);
+    //     if ($this->request->is(['patch', 'post', 'put'])) {
+    //         $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+    //         if ($this->Bookstate->save($bookstate)) {
+    //             $this->Flash->success(__('The bookinfo has been saved.'));
+    //
+    //             return $this->redirect(['action' => 'index',$bookstate['bookstate_id']]);
+    //         }
+    //         $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+    //     }
+    //     $this->set(compact('bookstate'));
+    // }
+    //
+
     // public function edit($id = null)
     // {
     //   // $id = $this->request->query['bookstate_id'];

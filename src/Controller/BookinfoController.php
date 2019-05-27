@@ -76,6 +76,22 @@ class BookinfoController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+    // public function edit($id = null)
+    // {
+    //     $bookinfo = $this->Bookinfo->get($id, [
+    //         'contain' => []
+    //     ]);
+    //     if ($this->request->is(['patch', 'post', 'put'])) {
+    //         $bookinfo = $this->Bookinfo->patchEntity($bookinfo, $this->request->getData());
+    //         if ($this->Bookinfo->save($bookinfo)) {
+    //             $this->Flash->success(__('The bookinfo has been saved.'));
+    //
+    //             return $this->redirect(['action' => 'index']);
+    //         }
+    //         $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+    //     }
+    //     $this->set(compact('bookinfo'));
+    // }
     public function edit($id = null)
     {
         $bookinfo = $this->Bookinfo->get($id, [
@@ -85,12 +101,24 @@ class BookinfoController extends AppController
             $bookinfo = $this->Bookinfo->patchEntity($bookinfo, $this->request->getData());
             if ($this->Bookinfo->save($bookinfo)) {
                 $this->Flash->success(__('The bookinfo has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+  return $this->redirect(['action' => 'result2',$bookinfo['bookinfo_isbn']]);
             }
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }
         $this->set(compact('bookinfo'));
+
+    }
+
+
+
+    public function result2($bookinfo_isbn=null){
+
+      $condition=['conditions'=>['Bookinfo.bookinfo_isbn'=>$bookinfo_isbn]];
+
+    $bookinfo = $this->Bookinfo->find('all',$condition);
+
+    $this->set(compact('bookinfo'));
+
     }
 
     /**
