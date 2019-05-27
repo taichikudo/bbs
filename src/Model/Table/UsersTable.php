@@ -17,7 +17,7 @@ class UsersTable extends Table
         $this->setPrimaryKey('user_id');
 
         $this->hasMany('Rental',[
-          'foreinkey'=>'id'
+          'foreinkey'=>'rental_user_id'
         ]);
     }
 
