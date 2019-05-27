@@ -30,15 +30,10 @@ class UsersController extends AppController
         $entity=$this->Users->get($data);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
-
-
       }elseif(!$user_id==null){
-
         $condition = ['conditions'=>['user_id'=>$user_id]];
         $data = $this->Users->find('all',$condition);
-
       }else{
-
         $data=$this->Users->find('all');
       }
       $this->set(compact('data'));
