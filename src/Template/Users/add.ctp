@@ -14,11 +14,11 @@
         <?php echo $this->Form->text('Users.user_tel');?>
         <p>メールアドレス</p>
         <?php echo $this->Form->text('Users.user_email');?>
-        <p>誕生日</p>
+        <p>誕生日(ex.200ｘ-12-03)</p>
         <?php echo $this->Form->text('Users.user_birthday');?>
         <p>パスワード</p>
         <?php echo $this->Form->text('Users.user_password');?>
-        <p>入会日</p>
+        <p>入会日(ex.200ｘ-12-03)</p>
         <?php echo $this->Form->text('Users.user_in');?>
         <?php echo $this->Form->hidden('Users.user_out');?>
 
