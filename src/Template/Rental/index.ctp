@@ -9,7 +9,7 @@ error_reporting(0);
 'url'=>['controller'=>'Rental',
 'action'=>'index']])?>
 <!-- <div>半角英数字で入力してください</div> -->
-<div><?=$this->Form->number('rental_user_id');?></div>
+<div><?=$this->Form->text('rental_user_id');?></div>
 <div><?=$this->Form->submit('検索')?></div>
 <?=$this->Form->end()?>
 
@@ -26,9 +26,9 @@ error_reporting(0);
     <thead>
       <tr>
   <h3>検索結果</h3>
-<th>会員ID</th><th>資料ID</th><th>貸出日</th><th>返却期日</th><th>資料名</th><th>返却日</th><th>備考</th>
+<th>会員ID</th><th>資料ID</th><th>貸出日</th><th>返却期日</th><th>資料名</th><th>延滞</th><th>備考</th>
 </tr>
-  </thead> 
+  </thead>
   <?php foreach($data->toArray() as $obj): ?>
 <tr>
   <?php $bbs++; ?>
