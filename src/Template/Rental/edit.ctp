@@ -5,7 +5,7 @@
 <?=$this->Form->hidden('Rental.rental_id')?>
 <h2>返却しますか？</h2>
 
-
+ 
 
 <div><?=$this->Form->submit('返却')?></div>
 <?=$this->Form->end()?>

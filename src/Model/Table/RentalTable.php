@@ -6,8 +6,29 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
+/**
+ * Rental Model
+ *
+ * @property \App\Model\Table\RentalUsersTable|\Cake\ORM\Association\BelongsTo $RentalUsers
+ * @property \App\Model\Table\RentalBooksTable|\Cake\ORM\Association\BelongsTo $RentalBooks
+ *
+ * @method \App\Model\Entity\Rental get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Rental newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Rental[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Rental|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Rental saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Rental patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Rental[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Rental findOrCreate($search, callable $callback = null, $options = [])
+ */
 class RentalTable extends Table
 {
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
     public function initialize(array $config)
     {
         parent::initialize($config);

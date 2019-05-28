@@ -2,7 +2,7 @@
 <?php
 error_reporting(0);
 ?>
-
+<!-- ここまで -->
 <?=$this->Form->create($entity,['type'=>'post','url'=>['controller'=>'Rental','action'=>'add']])?>
     <fieldset>
         <legend><?= __('Add Rental') ?></legend>

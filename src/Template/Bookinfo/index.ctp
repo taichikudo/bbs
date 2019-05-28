@@ -15,7 +15,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('bookinfo_code') ?></th>
@@ -28,7 +27,6 @@
         <tbody>
             <?php foreach ($bookinfo as $bookinfo): ?>
             <tr>
-                <td><?= $this->Number->format($bookinfo->id) ?></td>
                 <td><?= h($bookinfo->bookinfo_isbn) ?></td>
                 <td><?= h($bookinfo->bookinfo_bookname) ?></td>
                 <td><?= $this->Number->format($bookinfo->bookinfo_code) ?></td>
@@ -36,10 +34,7 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h($bookinfo->bookinfo_startday) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bookinfo->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bookinfo->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bookinfo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookinfo->id)]) ?>
-                </td>
+                  
             </tr>
             <?php endforeach; ?>
         </tbody>

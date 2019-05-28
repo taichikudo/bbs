@@ -31,50 +31,54 @@ class BookstateTable extends Table
         parent::initialize($config);
 
         $this->setTable('bookstate');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setDisplayField('bookstate_id');
+        $this->setPrimaryKey('bookstate_id');
+        $this->belongsTo('Bookinfo',[
+          'foreignkey'=>'bookstate_isbn',
+          'joinType'=>'INNER'
+        ]);
     }
-
+}
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
-
-        $validator
-            ->scalar('bookstate_isbn')
-            ->maxLength('bookstate_isbn', 13)
-            ->requirePresence('bookstate_isbn', 'create')
-            ->allowEmptyString('bookstate_isbn', false);
-
-        $validator
-            ->scalar('bookstate_name')
-            ->maxLength('bookstate_name', 200)
-            ->requirePresence('bookstate_name', 'create')
-            ->allowEmptyString('bookstate_name', false);
-
-        $validator
-            ->date('bookstate_in')
-            ->requirePresence('bookstate_in', 'create')
-            ->allowEmptyDate('bookstate_in', false);
-
-        $validator
-            ->date('bookstate_out')
-            ->requirePresence('bookstate_out', 'create')
-            ->allowEmptyDate('bookstate_out', false);
-
-        $validator
-            ->scalar('bookstate_etc')
-            ->maxLength('bookstate_etc', 200)
-            ->requirePresence('bookstate_etc', 'create')
-            ->allowEmptyString('bookstate_etc', false);
-
-        return $validator;
-    }
-}
+//     public function validationDefault(Validator $validator)
+//     {
+//         $validator
+//             ->integer('bookstate_id')
+//             ->allowEmptyString('bookstate_id', 'create');
+//
+//         $validator
+//             ->scalar('bookstate_isbn')
+//             ->maxLength('bookstate_isbn', 13)
+//             ->requirePresence('bookstate_isbn', 'create')
+//             ->allowEmptyString('bookstate_isbn', false);
+//
+//         $validator
+//             ->scalar('bookstate_name')
+//             ->maxLength('bookstate_name', 200)
+//             ->requirePresence('bookstate_name', 'create')
+//             ->allowEmptyString('bookstate_name', false);
+//
+//         $validator
+//             ->date('bookstate_in')
+//             ->requirePresence('bookstate_in', 'create')
+//             ->allowEmptyDate('bookstate_in', false);
+//
+//         $validator
+//             ->date('bookstate_out')
+//             ->requirePresence('bookstate_out', 'create')
+//             ->allowEmptyDate('bookstate_out', true);
+//
+//         $validator
+//             ->scalar('bookstate_etc')
+//             ->maxLength('bookstate_etc', 200)
+//             ->requirePresence('bookstate_etc', 'create')
+//             ->allowEmptyString('bookstate_etc', true);
+//
+//         return $validator;
+//     }
+// }

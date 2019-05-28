@@ -1,0 +1,16 @@
+form{
+  width: 550px;
+  margin: 20px;
+  border: solid 2px #008b8b;
+}
+table{
+  margin:20px;
+}
+input{
+  height: 30px;
+  margin: 10px;
+}
+input#submit_button{
+  float: right;
+  width: 150px;
+}

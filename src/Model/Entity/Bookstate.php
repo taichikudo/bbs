@@ -29,6 +29,8 @@ class Bookstate extends Entity
         'bookstate_name' => true,
         'bookstate_in' => true,
         'bookstate_out' => true,
-        'bookstate_etc' => true
+        'bookstate_etc' => true,
+        'rental' => true,
+        'bookinfo' => true
     ];
 }
