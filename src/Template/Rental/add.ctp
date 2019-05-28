@@ -15,8 +15,8 @@ error_reporting(0);
             echo $this->Form->hidden('Rental.rental_return');?>
             <p>備考</p>
             <?php echo $this->Form->text('Rental.rental_etc');?>
-
+            <br>
+            <?=$this->Form->submit('送信',['class'=>'searchBtn']) ?>
+            <?= $this->Form->end() ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
 </div>

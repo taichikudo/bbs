@@ -1,5 +1,6 @@
-<h1>ご登録ありがとうございます。</h1>
-
+<div class="users form columns content">
+<h3>ご登録ありがとうございます。</h3>
+<br>
 <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -11,7 +12,6 @@
                 <th scope="col"><?= $this->Paginator->sort('誕生日') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('パスワード') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('入会日') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('退会日') ?></th>
 
             </tr>
         </thead>
@@ -26,13 +26,11 @@
                 <td><?= h($user->user_birthday) ?></td>
                 <td><?= h($user->user_password) ?></td>
                 <td><?= h($user->user_in) ?></td>
-                <td><?= h($user->user_out) ?></td>
-
             </tr>
             <?php endforeach; ?>
-
         </tbody>
-
     </table>
-
-<?= $this->Html->link(__('トップへ戻る'), ['action' => 'index']) ?>
+    <br><p>上記の情報で登録いたしました。</p>
+<?= $this->Html->link(__('検索画面へ戻る'), ['action' => 'index']) ?>
+<?= $this->Html->link(__('トップへ戻る'), ['controller' => 'bbs','action' => 'index']) ?>
+</div>

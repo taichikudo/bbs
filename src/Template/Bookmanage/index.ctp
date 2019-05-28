@@ -7,23 +7,25 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
-
-
+    <div class="bookmanage form columns content">
     <div class="search">
-      <h1>ISBN検索</h1>
-      <?=$this->Form->create(null,
-      ['type'=>'post',
-      'url'=>['controller'=>'Bookmanage',
-      'action'=>'index']])?>
-      <div><?=$this->Form->text('bookinfo_isbn')?></div>
-      <div class="search_form"><?=$this->Form->submit('検索')?></div>
-      <?=$this->Form->end()?>
-    </div>
+      <h4>ISBN検索</h4>
+      <fieldset>
+        <?=$this->Form->create(null,
+        ['type'=>'post',
+        'url'=>['controller'=>'Bookmanage',
+        'action'=>'index']])?>
+        <div><?=$this->Form->text('bookinfo_isbn')?></div>
+        <?=$this->Form->submit('検索',['class'=>'searchBtn btnCenter']) ?>
+        <?=$this->Form->end()?>
+      </fieldset>
 
-<?php if(isset($bookstate)&&isset($bookinfo)){ ?>
-    <h1>検索結果</h1>
-    <hr>
-    <h2>資料目録</h2>
+    </div>
+    <?php if(isset($bookinfo)){ ?>
+    <?php if(!empty($bookinfo->toArray())){ ?>
+    <h4>検索結果</h4>
+    <br>
+    <h3>資料目録</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -37,8 +39,7 @@
             </tr>
         </thead>
         <tbody>
-          <?php if(isset($bookinfo)){?>
-            <?php foreach ($bookinfo->toArray() as $bookinfo): ?>
+          <?php foreach ($bookinfo->toArray() as $bookinfo): ?>
             <tr>
                 <td><?= h($bookinfo->bookinfo_isbn) ?></td>
                 <td><?= h($bookinfo->bookinfo_bookname) ?></td>
@@ -47,17 +48,19 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h(date('Y-m-d', strtotime($bookinfo->bookinfo_startday))) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?>
-                    <?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?>
+                    <ul>
+                      <li><?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?></li>
+                      <li class="stateList"><?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?></li>
 
+                    </ul>
                 </td>
             </tr>
             <?php endforeach; ?>
-          <?php } ?>
         </tbody>
     </table>
-
-    <h2>資料台帳</h2>
+    <br>
+    <?php if(!empty($bookstate->toArray())){ ?>
+    <h3>資料台帳</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -71,29 +74,30 @@
             </tr>
         </thead>
         <tbody>
-          <?php if(isset($bookstate)){?>
-            <?php foreach ($bookstate as $bookstate): ?>
-            <tr>
-                <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
-                <td><?= h($bookstate->bookstate_isbn) ?></td>
-                <td><?= h($bookstate->bookstate_name) ?></td>
-                <td><?= h($bookstate->bookstate_in) ?></td>
-                <td><?= h($bookstate->bookstate_out) ?></td>
-                <td><?= h($bookstate->bookstate_etc) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('変更'), ['controller'=>'bookstate','action' => 'edit2', $bookstate->bookstate_id]) ?>
-                    <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
+          <?php foreach ($bookstate as $bookstate): ?>
+          <tr>
+              <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
+              <td><?= h($bookstate->bookstate_isbn) ?></td>
+              <td><?= h($bookstate->bookstate_name) ?></td>
+              <td><?= h($bookstate->bookstate_in) ?></td>
+              <td><?= h($bookstate->bookstate_out) ?></td>
+              <td><?= h($bookstate->bookstate_etc) ?></td>
+              <td class="actions">
+                  <?= $this->Html->link(__('変更'), ['controller'=>'bookstate','action' => 'edit2', $bookstate->bookstate_id]) ?>
+                  <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
 
-                </td>
-            </tr>
-            <?php endforeach; ?>
-            <?php } ?>
+              </td>
+          </tr>
+          <?php endforeach; ?>
         </tbody>
     </table>
+    <?php } ?>
     <hr>
 <?php } ?>
-    <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
+<?php } ?>
+    <br>
+    <p><a class="searchBtn btnLeft" href="<?=$this->Url->build(['controller'=>'Bookinfo',
         'action'=>'add']); ?>">新規目録追加</a></p>
-
+  </div>
   </body>
 </html>

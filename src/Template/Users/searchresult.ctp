@@ -1,5 +1,4 @@
-
-
+<div class="users form columns content">
 <h4>会員情報</h4>
 
 <table cellpadding="0" cellspacing="0">
@@ -51,3 +50,4 @@
         </tbody>
     </table>
 <h6><?= $this->Html->link(__('前のページに戻る'), ['action' => 'index']) ?></h6>
+</div>

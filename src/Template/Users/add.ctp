@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="users form large-9 medium-8 columns content">
     <?=$this->Form->create(null,['type'=>'post','url'=>['controller'=>'Users','action'=>'add']])?>
     <fieldset>
@@ -21,8 +18,9 @@
         <p>入会日(ex.200ｘ-12-03)</p>
         <?php echo $this->Form->text('Users.user_in');?>
         <?php echo $this->Form->hidden('Users.user_out');?>
-
+        <br>
+        <?=$this->Form->submit('送信',['class'=>'searchBtn']) ?>
+        <?= $this->Form->end() ?>
     </fieldset>
-    <?= $this->Form->button(__('送信')) ?>
-    <?= $this->Form->end() ?>
+
 </div>
