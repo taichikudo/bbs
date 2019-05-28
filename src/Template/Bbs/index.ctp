@@ -13,8 +13,10 @@
       <div class="users">
         <h3>-　会員管理　-</h3>
         <div class="btnList">
-          <p><a class="btn" href="./user/add.html">登　録</a></p>
-          <p><a class="btn" href="./user/search.html">検　索</a></p>
+          <p><a class="btn" href="<?=$this->Url->build(['controller'=>'Users',
+              'action'=>'add']); ?>">登　録</a></p>
+          <p><a class="btn" href="<?=$this->Url->build(['controller'=>'Users',
+              'action'=>'index']); ?>">検　索</a></p>
         </div>
 
       </div>
