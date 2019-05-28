@@ -14,6 +14,7 @@ class Rental extends Entity
         'rental_user' => true,
         'rental_book' => true,
         'Users'=>true,
-        'Bookstate'=>true
+        'Bookstate'=>true,
+        'Bookinfo'=>true,
     ];
 }

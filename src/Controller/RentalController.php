@@ -3,21 +3,40 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\Time;
+
+
 class RentalController extends AppController
 {
+  public function initialize(){
+    parent::initialize();
+
+    $this->loadComponent('Paginator');
+    //モデルのロード
+    $this->loadModel('Bookinfo');
+    $this->loadModel('Bookstate');
+
+  }
     public function index(){
       $rental = $this->Rental;
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
         $this->log($rental_user_id);
         // $condition = ['conditions'=>['and'=>['rental_user_id'=>$rental_user_id,'rental_return'=>NULL]]];
-        $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return IS NULL']];
+        $condition = [
+          'conditions'=>[
+            'rental_user_id'=>$rental_user_id,
+            'rental_return IS NULL'],
+          'contain'=>[
+            'Bookstate'=>['Bookinfo']
+          ]];
         $data = $this->Rental->find('all',$condition);
+
         $this->set('data', $data);
         $bbs = 0;
         $this->set(compact('bbs'));
 
       }
+
 
       //$this->set(compact('myblogs'));
     }
@@ -40,7 +59,7 @@ public function result(){
         if ($this->request->is('post')) {
           $data = $this->request->data['Rental'];
           $entity = $this->Rental->newEntity($data);
-            $entity->rental_date = new Time(date('Y-m-d'));
+            $entity->rental_date = new Time(date('Y/m/d'));
           $this->Rental->save($entity);
           $this->set(compact('entity'));
           $this->set(compact('rental'));
