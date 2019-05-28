@@ -33,6 +33,14 @@ class BookstateTable extends Table
         $this->setTable('bookstate');
         $this->setDisplayField('bookstate_id');
         $this->setPrimaryKey('bookstate_id');
+        $this->belongsTo('Bookinfo', [
+          'foreignKey' => 'bookstate_isbn',
+        ]);
+        $this->hasMany('Rental',[
+          'foreignKey' =>'rental_book_id'
+        ]
+
+      );
     }
 }
     /**

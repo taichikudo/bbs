@@ -79,7 +79,7 @@ class BookstateController extends AppController
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
             if ($this->Bookstate->save($bookstate)) {
                 $this->Flash->success(__('The bookinfo has been saved.'));
-return $this->redirect(['action' => 'result2',$bookstate['bookstate_id']]);
+                return $this->redirect(['action' => 'result2',$bookstate['bookstate_id']]);
             }
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }

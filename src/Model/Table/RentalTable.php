@@ -37,13 +37,16 @@ class RentalTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('rental_id');
 
-
 $this->belongsTo('Users',[
   'foreignKey'=>'user_id'
 ]);
 $this->belongsTo('Bookstate',[
-  'foreignKey'=>'book_id'
+  'foreignKey'=>'rental_book_id'
 ]);
+
+// $this->belongsTo('Bookinfo',[
+//   'foreignKey'=>'book_id'
+// ]);
 
     }
 

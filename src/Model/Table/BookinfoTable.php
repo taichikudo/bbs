@@ -35,8 +35,10 @@ class BookinfoTable extends Table
         $this->setPrimaryKey('bookinfo_isbn');
 
         $this->hasMany('Bookstate', [
-          'foreignkey' => 'bookinfo_isbn',
+          'foreignKey' => 'bookstate_isbn',
         ]);
+
+
     }
     /**
      * Default validation rules.
