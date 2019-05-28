@@ -53,9 +53,16 @@ $this->belongsTo('Bookstate',[
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('rental_id')
+            ->integer('rental_id','IDは半角英数字で入力してください')
             ->allowEmptyString('rental_id', 'create');
 
+        $validator
+                ->integer('rental_user_id','IDは半角英数字で入力してください')
+                ->allowEmptyString('rental_user_id', false);
+
+        $validator
+                  ->integer('rental_book_id','IDは半角英数字で入力してください')
+                  ->allowEmptyString('rental_book_id', false);
         $validator
             ->scalar('rental_date')
             ->requirePresence('rental_date', 'create')

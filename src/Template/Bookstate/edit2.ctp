@@ -19,7 +19,7 @@
             echo $this->Form->control('bookstate_isbn');
             echo $this->Form->control('bookstate_name');
             echo $this->Form->control('bookstate_in');
-            echo $this->Form->control('bookstate_out');
+            echo $this->Form->text('bookstate_out');
             echo $this->Form->control('bookstate_etc');
         ?>
     </fieldset>
