@@ -8,24 +8,33 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
+    <h1 class="title">図書館管理システム</h1>
     <div class="menu">
-      <h1>図書館管理システム</h1>
       <div class="users">
-        <h3>【会員管理】</h3>
-        <p><a href="./user/add.html">登録</a></p>
-        <p><a href="./user/search.html">検索</a></p>
+        <h3>-　会員管理　-</h3>
+        <div class="btnList">
+          <p><a class="btn" href="./user/add.html">登　録</a></p>
+          <p><a class="btn" href="./user/search.html">検　索</a></p>
+        </div>
+
       </div>
       <div class="books">
-        <h3>【資料管理】</h3>
-        <p><a href="<?=$this->Url->build(['controller'=>'Bookmanage',
-            'action'=>'index']); ?>">資料管理</a></p>
-        <p><a href="<?=$this->Url->build(['controller'=>'Bookmanage',
-            'action'=>'index']); ?>">検索</a></p>
+        <h3>-　資料管理　-</h3>
+        <div class="btnList">
+          <p><a class="btn" href="<?=$this->Url->build(['controller'=>'Bookmanage',
+              'action'=>'index']); ?>">資料管理</a></p>
+          <p><a class="btn" href="<?=$this->Url->build(['controller'=>'Bookmanage',
+              'action'=>'index']); ?>">検　索</a></p>
+        </div>
+
       </div>
       <div class="rental">
-        <h3>【貸出管理】</h3>
-        <p><a href="<?=$this->Url->build(['controller'=>'Rental',
-            'action'=>'index']); ?>">貸出管理</a></p>
+        <h3>-　貸出管理　-</h3>
+        <div class="btnList">
+          <p><a class="btn" href="<?=$this->Url->build(['controller'=>'Rental',
+              'action'=>'index']); ?>">貸出管理</a></p>
+        </div>
+
       </div>
     </div>
   </body>
