@@ -71,9 +71,19 @@ class RentalController extends AppController
       $id = $this->request->query['rental_id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
+      $condition = [
+        'conditions'=>[
+          'rental_id'=>$id,
+          'rental_return IS NULL'],
+        'contain'=>[
+          'Bookstate'=>['Bookinfo']
+        ]];
+      $data = $this->Rental->find('all',$condition);
+
+      $this->set('data', $data);
       // $data = $this->request->data['Rental'];
       // $entity = $this->Rental->get($data['rental_id']);
-      $this->set('rental',$entity);
+
       }
 
 public function update(){
