@@ -1,7 +1,7 @@
 <?=$this->Form->create($entity,
    ['type'=>'post',
    'url'=>['controller'=>'Users',
-   'action'=>'remove']]) ?>
+   'action'=>'removefinish']]) ?>
 <?=$this->Form->hidden('Users.user_id')?>
 <h2>退会しますか？</h2>
 

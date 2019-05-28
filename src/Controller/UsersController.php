@@ -102,40 +102,32 @@ public function result() {
 
     public function remove($user_id=null)
     {
-    if($this->request->is('post')) {
-      $user3 = $this->request->data['Users']['user_id'];
-      $condition = [
-        'conditions'=>[
-          'and'=>[
-            'rental_user_id' => $user3,
-            'rental_return IS'=> null]]];
-      $entity = $this->Users->Rental->find('all',$condition);
-      if ($entity->count() === 0) {
-        return $this->redirect(['action'=>'removefinish']);
-      }else{
-        // return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
-        return $this->redirect(['action'=>'add']);
-      }
-    }else{
       $entity = $this->Users->get($user_id);
-    }
-
       $this->set(compact('entity'));
     }
 
     public function removefinish() {
       if ($this->request->is('post')){
-        $data = $this->request->data['Users'];
-        $entity = $this->Users->get($data['user_id']);
-        $this->Users->patchEntity($entity,$data);
-        date_default_timezone_set('Asia/Tokyo');
-        $entity->user_out = date('Y-m-d');
-        $this->Users->save($entity);
- }
+        $data = $this->request->data['Users']['user_id'];
+        $condition = [
+          'conditions'=>[
+            'and'=>[
+              'rental_user_id' => $data,
+              'rental_return IS'=> null]]];
+        $entity = $this->Users->Rental->find('all',$condition);
+        if ($entity->count() === 0) {
+          $entity = $this->Users->get($data);
+          // $this->Users->patchEntity($entity,$data);
+          date_default_timezone_set('Asia/Tokyo');
+          $entity->user_out = date('Y-m-d');
+          $this->Users->save($entity);
+        }else{
+          // return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
+          return $this->redirect(['action'=>'add']);
+        }
  // return $this->redirect(['action'=>'index']);
-
-
     }
+  }
 
 
     public function delete($user_id = null)
