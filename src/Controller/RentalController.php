@@ -41,9 +41,7 @@ class RentalController extends AppController
       //$this->set(compact('myblogs'));
     }
 
-public function result(){
 
-}
     public function view($id = null)
     {
         $rental = $this->Rental->get($id, [
@@ -64,18 +62,6 @@ public function result(){
           $this->set(compact('entity'));
           $this->set(compact('rental'));
             return $this->redirect(['action' => 'index']);
-            // $rental = $this->Rental->patchEntity($rental, $this->request->getData());
-                // $this->set(compact('rental'));
-            // if ($this->Rental->save($rental)) {
-        //         $this->Flash->success(__('ご登録ありがとうございます.'));
-        //
-        //         return $this->redirect(['action' => 'index']);
-        //     }
-        //     $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        // }
-        // $this->set(compact('rental'));
-
-
     }
   }
 
@@ -85,6 +71,9 @@ public function result(){
       $id = $this->request->query['rental_id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
+      // $data = $this->request->data['Rental'];
+      // $entity = $this->Rental->get($data['rental_id']);
+      $this->set('rental',$entity);
       }
 
 public function update(){
@@ -95,10 +84,13 @@ public function update(){
     $this->Rental->patchEntity($entity,$data);
     $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
+    $this->set(compact('rental'));
   }
   return $this->redirect(['action'=>'result']);
 }
+public function result(){
 
+}
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

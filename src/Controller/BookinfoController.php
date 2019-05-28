@@ -106,7 +106,6 @@ class BookinfoController extends AppController
             $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
         }
         $this->set(compact('bookinfo'));
-
     }
 
 
