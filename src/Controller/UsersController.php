@@ -28,7 +28,6 @@ class UsersController extends AppController
     public function searchresult($user_id = null) {
       if($this->request->is('post')){
         $data = $this->request->data['user_id'];
-        $id = $this->Users->get($data);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
         // if($data->count()===0){

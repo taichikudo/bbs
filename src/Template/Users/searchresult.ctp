@@ -46,7 +46,11 @@
               <?php } ?>
             </tr>
             <?php endforeach;
-          }?>
+          }
+          else{?>
+            <p>ご登録内容がございません。</p>
+          <?php } ?>
+
 
         </tbody>
     </table>
