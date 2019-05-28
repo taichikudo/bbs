@@ -37,59 +37,50 @@ class RentalTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('rental_id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'rental_user_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('RentalBooks', [
-            'foreignKey' => 'rental_book_id',
-            'joinType' => 'INNER'
-        ]);
+$this->belongsTo('Users',[
+  'foreignKey'=>'user_id'
+]);
+$this->belongsTo('Bookstate',[
+  'foreignKey'=>'rental_book_id'
+]);
+
+// $this->belongsTo('Bookinfo',[
+//   'foreignKey'=>'book_id'
+// ]);
+
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('rental_user_id')
-            ->allowEmptyString('rental_user_id', 'create');
+            ->integer('rental_id','IDは半角英数字で入力してください')
+            ->allowEmptyString('rental_id', 'create');
 
         $validator
-            ->date('rental_date')
+                ->integer('rental_user_id','IDは半角英数字で入力してください')
+                ->allowEmptyString('rental_user_id', false);
+
+        $validator
+                  ->integer('rental_book_id','IDは半角英数字で入力してください')
+                  ->allowEmptyString('rental_book_id', false);
+        $validator
+            ->scalar('rental_date')
             ->requirePresence('rental_date', 'create')
-            ->allowEmptyDate('rental_date', false);
+            ->allowEmptyDate('rental_date', true);
 
         $validator
-            ->date('rental_return')
+            ->scalar('rental_return')
+
             ->requirePresence('rental_return', 'create')
-            ->allowEmptyDate('rental_return', false);
+            ->allowEmptyDate('rental_return', true);
 
         $validator
             ->scalar('rental_etc')
             ->maxLength('rental_etc', 200)
             ->requirePresence('rental_etc', 'create')
-            ->allowEmptyString('rental_etc', false);
+            ->allowEmptyString('rental_etc', true);
 
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['rental_user_id'], 'RentalUsers'));
-        $rules->add($rules->existsIn(['rental_book_id'], 'RentalBooks'));
-
-        return $rules;
-    }
-}
+  }

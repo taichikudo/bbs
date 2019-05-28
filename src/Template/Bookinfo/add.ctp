@@ -7,15 +7,15 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Bookinfo'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Bookinfo'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="bookinfo form large-9 medium-8 columns content">
     <?= $this->Form->create($bookinfo) ?>
     <fieldset>
         <legend><?= __('Add Bookinfo') ?></legend>
-        <?php
-            echo $this->Form->control('bookinfo_isbn');
+        <p>ISBNコード</p>
+        <?php    echo $this->Form->text('bookinfo_isbn');
             echo $this->Form->control('bookinfo_bookname');
             echo $this->Form->control('bookinfo_code');
             echo $this->Form->control('bookinfo_auther');

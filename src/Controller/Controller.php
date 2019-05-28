@@ -16,6 +16,7 @@ public $useTable = false;
     $this->loadModel('Bookinfo');
     $this->loadModel('Bookstate');
     $this->loadModel('Rental');
+    $this->loadModel('Categories');
 
     $this->viewBuilder()->setLayout('');
 

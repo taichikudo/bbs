@@ -1,33 +1,11 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Rental $rental
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $rental->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $rental->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Rental'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="rental form large-9 medium-8 columns content">
-    <?= $this->Form->create($rental) ?>
-    <fieldset>
-        <legend><?= __('Edit Rental') ?></legend>
-        <?php
-            echo $this->Form->control('rental_user_id');
-            echo $this->Form->control('rental_book_id');
-            echo $this->Form->control('rental_date');
-            echo $this->Form->control('rental_return');
-            echo $this->Form->control('rental_etc');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+    <?=$this->Form->create($entity,
+    ['type'=>'post',
+    'url'=>['controller'=>'Rental',
+    'action'=>'update']]) ?>
+<?=$this->Form->hidden('Rental.rental_id')?>
+<h2>返却しますか？</h2>
+
+
+
+<div><?=$this->Form->submit('返却')?></div>
+<?=$this->Form->end()?>

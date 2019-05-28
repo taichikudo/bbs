@@ -31,10 +31,15 @@ class BookinfoTable extends Table
         parent::initialize($config);
 
         $this->setTable('bookinfo');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
-    }
+        $this->setDisplayField('bookinfo_isbn');
+        $this->setPrimaryKey('bookinfo_isbn');
 
+        $this->hasMany('Bookstate', [
+          'foreignKey' => 'bookstate_isbn',
+        ]);
+
+
+    }
     /**
      * Default validation rules.
      *
@@ -43,10 +48,6 @@ class BookinfoTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
-
         $validator
             ->scalar('bookinfo_isbn')
             ->maxLength('bookinfo_isbn', 13)

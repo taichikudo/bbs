@@ -1,0 +1,30 @@
+.search_form{
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+h2#result{
+  text-align: center;
+}
+p.menu{
+  margin: 10px;
+}
+.search{
+  width: 500px;
+  height: 200px;
+  border: solid 2px #008b8b;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+}
+table{
+
+}
+.index{
+  margin: 20px;
+  padding-bottom: 50px;
+  /* border: solid 2px #008b8b; */
+}

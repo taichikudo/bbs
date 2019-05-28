@@ -1,9 +1,3 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Bookstate $bookstate
- */
-?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -21,12 +15,12 @@
     <fieldset>
         <legend><?= __('Edit Bookstate') ?></legend>
         <?php
-            echo $this->Form->hidden('bookstate_book_id');
-            echo $this->Form->hidden('bookstate_isbn');
-            echo $this->Form->hidden('bookstate_name');
+            echo $this->Form->control('bookstate_book_id');
+            echo $this->Form->control('bookstate_isbn');
+            echo $this->Form->control('bookstate_name');
             echo $this->Form->control('bookstate_in');
-            echo $this->Form->control('bookstate_out');
-            echo $this->Form->hidden('bookstate_etc');
+            echo $this->Form->text('bookstate_out');
+            echo $this->Form->control('bookstate_etc');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -1,0 +1,65 @@
+h1.title{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 100%;
+  color: #008b8b;
+  border-left: solid 5px #00abab;
+  padding-left: 10px;
+}
+h3{
+  background-color: #008b8b;
+  margin:0;
+  padding:20px;
+  color: white;
+}
+
+.menu{
+  width: 100%;
+  height: 300px;
+  text-align: center;
+}
+.users{
+  width: 30%;
+  height: 300px;
+  border: solid 2px #008b8b;
+  margin: 20px;
+  float:left;
+}
+.books{
+  width: 30%;
+  height: 300px;
+  border: solid 2px #008b8b;
+  margin: 20px;
+  float:left;
+}
+.rental{
+  width: 30%;
+  height: 300px;
+  border: solid 2px #008b8b;
+  position: relative;
+  margin: 20px;
+  float:left;
+}
+.btnList{
+  margin: 40px;
+}
+
+a.btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.75em 0.5em;
+  text-decoration: none;
+  color: #008b8b;
+  background: #DCDCDC;
+  transition: .4s;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+a.btn:hover {
+  background: #00BBBB;
+  color: white;
+}

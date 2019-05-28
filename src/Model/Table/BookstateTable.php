@@ -31,10 +31,17 @@ class BookstateTable extends Table
         parent::initialize($config);
 
         $this->setTable('bookstate');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
-    }
+        $this->setDisplayField('bookstate_id');
+        $this->setPrimaryKey('bookstate_id');
+        $this->belongsTo('Bookinfo', [
+          'foreignKey' => 'bookstate_isbn',
+        ]);
+        $this->hasMany('Rental',[
+          'foreignKey' =>'rental_book_id'
+        ]
 
+      );
+    }
     /**
      * Default validation rules.
      *
@@ -44,8 +51,8 @@ class BookstateTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
+            ->integer('bookstate_id')
+            ->allowEmptyString('bookstate_id', 'create');
 
         $validator
             ->scalar('bookstate_isbn')
@@ -67,13 +74,13 @@ class BookstateTable extends Table
         $validator
             ->date('bookstate_out')
             ->requirePresence('bookstate_out', 'create')
-            ->allowEmptyDate('bookstate_out', false);
+            ->allowEmptyDate('bookstate_out', true);
 
         $validator
             ->scalar('bookstate_etc')
             ->maxLength('bookstate_etc', 200)
             ->requirePresence('bookstate_etc', 'create')
-            ->allowEmptyString('bookstate_etc', false);
+            ->allowEmptyString('bookstate_etc', true);
 
         return $validator;
     }
