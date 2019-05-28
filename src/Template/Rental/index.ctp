@@ -41,11 +41,32 @@ error_reporting(0);
       echo date('Y-m-d',$momo);
   }else{
     $momo = $mikan + 1296000;
-
     echo date('Y-m-d',$momo);
   }
    ?></td>
+
+
    <td><?= h($obj->bookstate->bookstate_name) ?></td>
+   <td><?php
+   $remon = strtotime($obj->bookstate->bookinfo->bookinfo_startday);
+   $budou = $remon + 2592000;
+   $suika = date('Y-m-d');
+   $ringo= strtotime($suika);
+   $mikan =  strtotime($obj->rental_date);
+   if($budou>=$ringo){
+     $momo = $mikan + 864000;
+   }else{
+     $momo = $mikan + 1296000;
+   }
+ if($momo<=$ringo){
+   echo "貸出期限が過ぎています";
+   $a+=1;
+ }else{
+   echo "";
+   $a+=0;
+ }
+    ?></td>
+
    <td><?= h($obj->rental_return) ?></td>
    <td><?= h($obj->rental_etc) ?></td>
 
@@ -71,7 +92,11 @@ error_reporting(0);
 </tr>
 <?php endforeach; ?>
 <?php } ?>
+<?php ?>
 <?php
+if($a>=1){
+echo "貸出期限を過ぎているものがあります";
+}else{
 if(isset($bbs)){
 $limit = 5 - $bbs;
 if($bbs>=5){
@@ -81,7 +106,7 @@ if($bbs>=5){
   echo $limit .'冊借りることができます';?>
     <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
 
-<?php  }}?>
+<?php } }}?>
 
 
 
