@@ -35,6 +35,8 @@ class RentalController extends AppController
         $bbs = 0;
         $this->set(compact('bbs'));
 
+      }else{
+        $msg = '入力項目が間違っています';
       }
 
 
@@ -77,6 +79,9 @@ public function result(){
 
 
     }
+    else{
+      $msg = '入力項目が間違っています';
+    }
   }
 
 
@@ -95,6 +100,8 @@ public function update(){
     $this->Rental->patchEntity($entity,$data);
     $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
+  }else{
+    $msg = '入力項目が間違っています';
   }
   return $this->redirect(['action'=>'result']);
 }

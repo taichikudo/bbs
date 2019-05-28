@@ -53,7 +53,7 @@ $this->belongsTo('Bookstate',[
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('rental_id')
+            ->integer('rental_id','IDは半角英数字で入力してください')
             ->allowEmptyString('rental_id', 'create');
 
         $validator
