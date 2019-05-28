@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 class UsersController extends AppController
 {
@@ -121,8 +122,9 @@ public function result() {
           date_default_timezone_set('Asia/Tokyo');
           $entity->user_out = date('Y-m-d');
           $this->Users->save($entity);
+
         }else{
-          return $this->redirect(['controller'=>'Rental','action'=>'edit',$data]);
+          return $this->redirect(['controller'=>'Rental','action'=>'index',$data]);
           // return $this->redirect(['action'=>'add']);
         }
  // return $this->redirect(['action'=>'index']);
