@@ -13,7 +13,7 @@
             echo $this->Form->control('user_email');
             echo $this->Form->control('user_birthday',['minYear'=>date('Y')-100]);
             echo $this->Form->control('user_password');
-            echo $this->Form->contorl('user_in');
+            echo $this->Form->control('user_in');
             echo $this->Form->hidden('user_out');
         ?>
     </fieldset>
