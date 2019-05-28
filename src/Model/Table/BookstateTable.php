@@ -33,6 +33,10 @@ class BookstateTable extends Table
         $this->setTable('bookstate');
         $this->setDisplayField('bookstate_id');
         $this->setPrimaryKey('bookstate_id');
+        $this->belongsTo('Bookinfo',[
+          'foreignkey'=>'bookstate_isbn',
+          'joinType'=>'INNER'
+        ]);
     }
 }
     /**

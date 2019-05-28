@@ -8,10 +8,7 @@
   </head>
   <body>
 
-    <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
-        'action'=>'add']); ?>">新規目録追加</a></p>
-        <p><a href="<?=$this->Url->build(['controller'=>'Bookstate',
-            'action'=>'add']); ?>">新規台帳追加</a></p>
+
     <div class="search">
       <h1>ISBN検索</h1>
       <?=$this->Form->create(null,
@@ -48,8 +45,9 @@
                 <td><?= $this->Number->format($bookinfo->bookinfo_code) ?></td>
                 <td><?= h($bookinfo->bookinfo_auther) ?></td>
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
-                <td><?= h($bookinfo->bookinfo_startday) ?></td>
+                <td><?= h(date('Y-m-d', strtotime($bookinfo->bookinfo_startday))) ?></td>
                 <td class="actions">
+                    <?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?>
                     <?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?>
 
                 </td>
@@ -94,6 +92,8 @@
     </table>
     <hr>
 <?php } ?>
+    <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
+        'action'=>'add']); ?>">新規目録追加</a></p>
 
   </body>
 </html>

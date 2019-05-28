@@ -17,6 +17,7 @@ class BookstateController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
     public function index()
     {
          $bookstate = $this->paginate($this->Bookstate);
@@ -45,8 +46,12 @@ class BookstateController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($isbn = null)
     {    $bookstate = $this->Bookstate->newEntity();
+         $condition = ['fields'=>['bookinfo_isbn','bookinfo_bookname'],'conditions'=>['bookinfo_isbn'=>$isbn]];
+         $data = $this->Bookstate->Bookinfo->find('all',$condition)->first();
+         $this->log($data);
+         $data = $data->toArray();
          if ($this->request->is('post')) {
              $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
              if ($this->Bookstate->save($bookstate)) {
@@ -57,6 +62,7 @@ class BookstateController extends AppController
              $this->Flash->error(__('The bookstate could not be saved. Please, try again.'));
          }
          $this->set(compact('bookstate'));
+         $this->set(compact('data'));
 
     }
 

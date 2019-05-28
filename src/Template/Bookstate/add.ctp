@@ -16,8 +16,8 @@
         <legend><?= __('Add Bookstate') ?></legend>
         <?php
         echo $this->Form->hidden('bookstate_id');
-            echo $this->Form->control('bookstate_isbn');
-            echo $this->Form->control('bookstate_name');
+            echo $this->Form->control('bookstate_isbn',['default'=>$data['bookinfo_isbn']]);
+            echo $this->Form->control('bookstate_name',['default'=>$data['bookinfo_bookname']]);
             echo $this->Form->control('bookstate_in');
             echo $this->Form->hidden('bookstate_out');
             echo $this->Form->control('bookstate_etc');

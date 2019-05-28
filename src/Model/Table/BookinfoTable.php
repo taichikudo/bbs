@@ -36,6 +36,7 @@ class BookinfoTable extends Table
 
         $this->hasMany('Bookstate', [
           'foreignkey' => 'bookinfo_isbn',
+          'joinType' => 'INNER'
         ]);
     }
     /**
