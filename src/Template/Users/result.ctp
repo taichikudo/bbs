@@ -35,4 +35,5 @@
 
     </table>
 
-<?= $this->Html->link(__('トップへ戻る'), ['action' => 'index']) ?>
+
+<li><a href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a></li>
