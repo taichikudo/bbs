@@ -23,10 +23,10 @@
                 <td><?= h($user->user_address) ?></td>
                 <td><?= h($user->user_tel) ?></td>
                 <td><?= h($user->user_email) ?></td>
-                <td><?= h($user->user_birthday) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_birthday))) ?></td>
                 <td><?= h($user->user_password) ?></td>
-                <td><?= h($user->user_in) ?></td>
-                <td><?= h($user->user_out) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_in))) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_out))) ?></td>
 
             </tr>
             <?php endforeach; ?>
@@ -35,4 +35,5 @@
 
     </table>
 
-<?= $this->Html->link(__('トップへ戻る'), ['action' => 'index']) ?>
+
+<li><a href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a></li>

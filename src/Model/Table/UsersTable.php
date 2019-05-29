@@ -25,7 +25,7 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('user_id','会員番号を入力して下さい。')
+            ->integer('user_id')
             ->allowEmptyString('user_id', 'create');
 
         $validator

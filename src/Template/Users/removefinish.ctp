@@ -4,8 +4,7 @@
   <ul>
     <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>">会員登録</a></li>
     <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">会員検索</a></li>
-    <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">トップへ戻る</a></li>
-
+    <li><a href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a></li>
 
 
   </ul>

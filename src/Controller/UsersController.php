@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 class UsersController extends AppController
 {
@@ -27,7 +28,6 @@ class UsersController extends AppController
     public function searchresult($user_id = null) {
       if($this->request->is('post')){
         $data = $this->request->data['user_id'];
-        $id = $this->Users->get($data);
         $condition = ['conditions'=>['user_id'=>$data]];
         $data = $this->Users->find('all',$condition);
         // if($data->count()===0){
@@ -121,9 +121,10 @@ public function result() {
           date_default_timezone_set('Asia/Tokyo');
           $entity->user_out = date('Y-m-d');
           $this->Users->save($entity);
+
         }else{
-          // return $this->redirect(['controller'=>'Rental','action'=>'edit',$user3]);
-          return $this->redirect(['action'=>'add']);
+          return $this->redirect(['controller'=>'Rental','action'=>'index',$data]);
+          // return $this->redirect(['action'=>'add']);
         }
  // return $this->redirect(['action'=>'index']);
     }

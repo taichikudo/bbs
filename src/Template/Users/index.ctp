@@ -7,9 +7,8 @@
   <div class="">
     会員番号を入力ください
   </div>
-  <fieldset class="form">
-  <div class=""><?=$this->Form->error('user_id') ?>
+
+  <div class="">
     <?=$this->Form->text('user_id') ?></div>
   <div class=""><?=$this->Form->submit('検索') ?></div>
-  </fieldset>
 <?=$this->Form->end() ?>
