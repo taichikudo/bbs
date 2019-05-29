@@ -8,7 +8,7 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
-    <h1 class="title">図書館管理システム</h1>
+    <h1 class="title">図書館管理メニュー</h1>
     <div class="menu">
       <div class="users">
         <h3>-　会員管理　-</h3>

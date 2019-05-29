@@ -27,7 +27,8 @@
         <!-- <p>入会日(ex.200ｘ-12-03)</p> -->
         <?php  echo $this->Form->hidden('user_in');?>
         <?php echo $this->Form->hidden('user_out'); ?>
-    </fieldset>
-    <?= $this->Form->button(__('送信')) ?>
+        <br>
+    <?=$this->Form->submit('送信',['class'=>'searchBtn']) ?>
     <?= $this->Form->end() ?>
+    </fieldset>
 </div>

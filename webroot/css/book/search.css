@@ -1,9 +1,6 @@
 .search_form{
   text-align: center;
 }
-h1{
-  text-align: center;
-}
 h2#result{
   text-align: center;
 }
@@ -12,13 +9,14 @@ p.menu{
 }
 .search{
   width: 500px;
-  height: 200px;
-  border: solid 2px #008b8b;
+  height: 100px;
+  /* border: solid 2px #008b8b; */
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
   margin: auto;
+  text-align: center;
 }
 table{
 
@@ -27,4 +25,31 @@ table{
   margin: 20px;
   padding-bottom: 50px;
   /* border: solid 2px #008b8b; */
+}
+ul {
+  list-style: none;
+  font-size: 1em;
+}
+ul li.stateList{
+  margin-top: 13px;
+  width: 5em;
+  font-size: 1.1em;
+  border: solid 2px #00abab;
+  text-align: center;
+  transition: .3s;
+}
+ul li.stateList:hover{
+  font-size: 1.5em;
+}
+h4{
+  color: #008b8b;
+  border-bottom: solid 2px #008b8b;
+}
+/* h3{
+  margin-top: 30px;
+} */
+#formTxt{
+  margin-top: 15px;
+  width: 100%;
+  display:inline-flex;
 }

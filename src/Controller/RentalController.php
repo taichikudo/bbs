@@ -68,9 +68,12 @@ $this->set('msg',$msg);
         $this->set('rental', $rental);
     }
 
-    public function add()
+    public function add($rUser_id=null)
     {
         $rental = $this->Rental->newEntity();
+        $condition = ['fields'=>['rental_user_id'],'conditions'=>['rental_user_id'=>$rUser_id]];
+        $data = $this->Rental->find('all',$condition)->first();
+        $this->set(compact('data'));
         if ($this->request->is('post')) {
           $data = $this->request->data['Rental'];
           $entity = $this->Rental->newEntity($data);
