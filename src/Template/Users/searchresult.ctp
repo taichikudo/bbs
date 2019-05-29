@@ -31,10 +31,10 @@
                 <td><?= h($user->user_address) ?></td>
                 <td><?= h($user->user_tel) ?></td>
                 <td><?= h($user->user_email) ?></td>
-                <td><?= h($user->user_birthday) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_birthday))) ?></td>
                 <td><?= h($user->user_password) ?></td>
-                <td><?= h($user->user_in) ?></td>
-                <td><?= h($user->user_out) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_in))) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($user->user_out))) ?></td>
                 <?php
                   if($user->user_out===null){
                  ?>
@@ -45,7 +45,11 @@
               <?php } ?>
             </tr>
             <?php endforeach;
-          }?>
+          }
+          else{?>
+            <p>ご登録内容がございません。</p>
+          <?php } ?>
+
 
         </tbody>
     </table>

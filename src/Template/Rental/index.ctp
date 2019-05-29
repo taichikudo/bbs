@@ -73,25 +73,7 @@ error_reporting(0);
  }
     ?></td>
 
-   <td><?= h($obj->rental_return) ?></td>
-   <td><?= h($obj->rental_etc) ?></td>
 
-
-  <!-- <td>
-    <?php $apple = strtotime($obj->rental_date);
-    $sumple=$apple + 1209600;
-    echo date('Y-m-d',$sumple); ?>
-  </td> -->
-
-
-<!-- <td><?= h(date('Y-m-d',strtotime($obj->bookstate->bookinfo->bookinfo_startday))) ?></td> -->
-
-
-<!-- <?php $apple=$obj->rental_date ?> -->
-
-
-
-  <td><?= h($obj->rental_return) ?></td>
   <td><?= h($obj->rental_etc) ?></td>
   <td><a href="<?=$this->Url->build(['controller'=>'Rental',
      'action'=>'edit']);?>?rental_id=<?=$obj->rental_id ?>">返却</td>

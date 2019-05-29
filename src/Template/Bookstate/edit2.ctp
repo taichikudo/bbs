@@ -15,7 +15,7 @@
     <fieldset>
         <legend><?= __('Edit Bookstate') ?></legend>
         <?php
-            echo $this->Form->control('bookstate_book_id');
+            echo $this->Form->hidden('bookstate_book_id');
             echo $this->Form->control('bookstate_isbn');
             echo $this->Form->control('bookstate_name');
             echo $this->Form->control('bookstate_in');
