@@ -78,7 +78,9 @@
               <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
               <td><?= h($bookstate->bookstate_isbn) ?></td>
               <td><?= h($bookstate->bookstate_name) ?></td>
-              <td><?= h($bookstate->bookstate_in) ?></td>
+              <td><?= h(date('Y-m-d', strtotime($bookstate->bookstate_in))) ?></td>
+              <!-- <td><?= h(date('Y-m-d', strtotime($bookstate->bookstate_out))) ?></td>
+              <td><?= h($bookstate->bookstate_in) ?></td> -->
               <td><?= h($bookstate->bookstate_out) ?></td>
               <td><?= h($bookstate->bookstate_etc) ?></td>
               <td class="actions">

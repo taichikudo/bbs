@@ -20,7 +20,7 @@
 
                 <td><?= h($obj->bookstate_isbn) ?></td>
                 <td><?= h($obj->bookstate_name) ?></td>
-                <td><?= h($obj->bookstate_in) ?></td>
+                <td><?= h(date('Y-m-d',strtotime($obj->bookstate_in))) ?></td>
                 <td><?= h($obj->bookstate_out) ?></td>
                 <td><?= h($obj->bookstate_etc) ?></td>
 

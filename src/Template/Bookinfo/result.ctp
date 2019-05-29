@@ -1,4 +1,4 @@
-<h1>図書管理目録の登録が完了しました</h1>
+<h4>図書管理目録の登録が完了しました</h4>
 <!-- <h3><a href="<?=$this->Url->build(['controller'=>'Bookstate',
     'action'=>'add']); ?>">続いて台帳の登録に移動できます</a></h3> -->
 
@@ -22,7 +22,7 @@
                 <td><?= h($obj->bookinfo_code) ?></td>
                 <td><?= h($obj->bookinfo_auther) ?></td>
                 <td><?= h($obj->bookinfo_com) ?></td>
-                <td><?= h($obj->bookinfo_startday) ?></td>
+            <td><?= h(date('Y-m-d',strtotime($obj->bookinfo_startday))) ?></td>
 <?= $this->Html->link(__('続いて台帳の追加に移動 '), ['controller'=>'bookstate','action' => 'add', $obj->bookinfo_isbn]) ?>
 
             </tr>
@@ -31,5 +31,11 @@
         </tbody>
 
     </table>
+    <ul>
+      <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>">会員登録</a></li>
+      <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">会員検索</a></li>
+      <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書登録</a></li>
+      <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書検索</a></li>
+      <li><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'index']) ?>">返却、貸出</a></li>
 
-<?= $this->Html->link(__('トップへ戻る'), ['action' => 'index']) ?>
+      <hr>

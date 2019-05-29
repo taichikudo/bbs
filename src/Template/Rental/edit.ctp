@@ -1,11 +1,11 @@
 <fieldset>
-  <legend>返却確認画面</legend>
-  <?=$this->Form->create($entity,
-  ['type'=>'post',
-  'url'=>['controller'=>'Rental',
-  'action'=>'update']]) ?>
-<?=$this->Form->hidden('Rental.rental_id')?>
+<?=$this->Form->create($entity,
+    ['type'=>'post',
+    'url'=>['controller'=>'Rental',
+    'action'=>'update']]) ?>
+<?=$this->Form->hidden('Rental.rental_id',['value'=>$this->request->query['rental_id']])?>
 <h4>以下を返却しますか？</h4><br>
+
 <tbody>
 <table>
 

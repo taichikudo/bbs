@@ -116,17 +116,14 @@ public function update(){
     $this->Rental->save($entity);
     $this->set(compact('rental'));
     $this->set(compact('entity'));
-    $this->set(compact('data'));
   }
-  return $this->redirect(['action'=>'result',$entity['rental_id']]);
+  return $this->redirect(['action'=>'result','rental_id' => $entity['rental_id']]);
 }
 public function result(){
-$condition=['conditions'=>['Rental.rental_id'=>$entity['rental_id']]];
-
-$rental = $this->Rental->find('all',$condition);
-
-$this->set(compact('rental'));
-
+    $rental_id = $this->request->query['rental_id'];
+    $entity = $this->Rental->get($rental_id);
+    $this->set('entity',$entity);
+  
 }
     public function delete($id = null)
     {

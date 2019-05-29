@@ -1,27 +1,26 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $bookstate->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $bookstate->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Bookstate'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+
 <div class="bookstate form large-9 medium-8 columns content">
     <?= $this->Form->create($bookstate) ?>
     <fieldset>
-        <legend><?= __('Edit Bookstate') ?></legend>
+
         <?php
-            echo $this->Form->hidden('bookstate_book_id');
-            echo $this->Form->control('bookstate_isbn');
-            echo $this->Form->control('bookstate_name');
-            echo $this->Form->control('bookstate_in');
-            echo $this->Form->text('bookstate_out');
-            echo $this->Form->control('bookstate_etc');
-        ?>
+            echo $this->Form->hidden('bookstate_book_id');?>
+            <p>ISBN番号</p>
+          <?php    echo $this->Form->text('bookstate_isbn');?>
+          <p>資料名</p>
+            <?php  echo $this->Form->text('bookstate_name');?>
+            <p>入荷日</p>
+            <?php echo $this->Form->date('bookstate_in',[
+                'type' => 'date',
+                'label' => false,
+                'monthNames' => false,
+                'maxYear' => date('Y'),
+                'minYear' => date('Y') - 80,
+                'empty' => ' '
+            ]);?>
+            <?php  echo $this->Form->hidden('bookstate_out');?>
+            <p>備考</p>
+            <?php echo $this->Form->text('bookstate_etc');?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
