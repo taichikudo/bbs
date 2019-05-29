@@ -24,7 +24,6 @@
       <li><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'index']) ?>">返却、貸出</a></li>
       <!-- <td><a href="<?=$this->Url->build(['controller'=>'Rental',
          'action'=>'index',$data['rental_user_id']]);?>">続いて返却</td> -->
-  <?=$rental?>
     </ul>
   </nav>
 </fieldset>
