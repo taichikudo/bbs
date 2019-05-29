@@ -16,7 +16,7 @@ class RentalController extends AppController
     $this->loadModel('Bookstate');
 
   }
-    public function index(){
+    public function index($kudo=null){
       $rental = $this->Rental;
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
@@ -34,6 +34,21 @@ class RentalController extends AppController
         $this->set('data', $data);
         $bbs = 0;
         $this->set(compact('bbs'));
+
+      }elseif($kudo!==null){
+        $condition = [
+          'conditions'=>[
+            'rental_user_id'=>$kudo,
+            'rental_return IS NULL'],
+          'contain'=>[
+            'Bookstate'=>['Bookinfo']
+          ]];
+        $data = $this->Rental->find('all',$condition);
+        $this->set('data', $data);
+        $bbs = 0;
+        $this->set(compact('bbs'));
+
+
 
       }
 
@@ -61,7 +76,7 @@ class RentalController extends AppController
           $this->Rental->save($entity);
           $this->set(compact('entity'));
           $this->set(compact('rental'));
-            return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index',$data['rental_user_id']]);
     }
   }
 
