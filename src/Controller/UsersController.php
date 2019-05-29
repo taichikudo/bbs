@@ -82,10 +82,12 @@ public function result() {
         $user = $this->Users->get($user_id, [
             'contain' => []
         ]);
+        $entity = '';
           // $url=$this->referer();
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
+            $entity = $this->Users->patchEntity($user, $this->request->getData());
+            $entity->user_in = date('Y-m-d',strtotime($user['user_in']));
+            if ($this->Users->save($entity)) {
                 $this->Flash->success(__('変更完了しました.'));
 
                   // return $this->redirect($url);
@@ -93,7 +95,7 @@ public function result() {
             }
             $this->Flash->error(__('変更に失敗しました. もう一度入力してください.'));
         }
-        $this->set(compact('user'));
+        $this->set('user',$user);
         $this->set('entity',$user);
     }
 

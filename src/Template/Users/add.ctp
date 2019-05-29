@@ -15,11 +15,25 @@
         <p>メールアドレス</p>
         <?php echo $this->Form->text('Users.user_email');?>
         <p>誕生日(ex.200ｘ-12-03)</p>
-        <?php echo $this->Form->text('Users.user_birthday');?>
+        <?php echo $this->Form->control('Users.user_birthday',[
+            'type' => 'date',
+            'label' => false,
+            'monthNames' => false,
+            'maxYear' => date('Y'),
+            'minYear' => date('Y') - 80,
+            'empty' => ' '
+        ]);?>
         <p>パスワード</p>
         <?php echo $this->Form->text('Users.user_password');?>
         <p>入会日(ex.200ｘ-12-03)</p>
-        <?php echo $this->Form->text('Users.user_in');?>
+        <?php echo $this->Form->control('Users.user_in',[
+            'type' => 'date',
+            'label' => false,
+            'monthNames' => false,
+            'maxYear' => date('Y'),
+            'minYear' => date('Y') - 80,
+            'empty' => ' '
+        ]);?>
         <?php echo $this->Form->hidden('Users.user_out');?>
 
     </fieldset>
