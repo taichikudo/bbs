@@ -37,22 +37,32 @@ class RentalTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('rental_id');
 
-
 $this->belongsTo('Users',[
   'foreignKey'=>'user_id'
 ]);
 $this->belongsTo('Bookstate',[
-  'foreignKey'=>'book_id'
+  'foreignKey'=>'rental_book_id'
 ]);
+
+// $this->belongsTo('Bookinfo',[
+//   'foreignKey'=>'book_id'
+// ]);
 
     }
 
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('rental_id')
-            ->allowEmptyString('rental_id', 'create');
+            ->integer('rental_id','IDは半角英数字で入力してください')
+            ->notEmpty('rental_id');
 
+        $validator
+                ->integer('rental_user_id','IDは半角英数字で入力してください')
+                ->notEmpty('rental_user_id');
+
+        $validator
+                  ->integer('rental_book_id','IDは半角英数字で入力してください')
+                  ->notEmpty('rental_book_id');
         $validator
             ->scalar('rental_date')
             ->requirePresence('rental_date', 'create')

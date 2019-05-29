@@ -6,46 +6,27 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Users Model
- *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
- */
 class UsersTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
     public function initialize(array $config)
     {
         parent::initialize($config);
 
         $this->setTable('users');
         $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('user_id');
+
+        $this->hasMany('Rental',[
+          'foreignKey'=>'rental_user_id',
+          'joinType'=>'INNER'
+        ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
+            ->integer('user_id','数字で入力してください。')
+            ->allowEmptyString('user_id', 'create');
 
         $validator
             ->scalar('user_name')
@@ -74,7 +55,7 @@ class UsersTable extends Table
         $validator
             ->date('user_birthday')
             ->requirePresence('user_birthday', 'create')
-            ->allowEmptyDate('user_birthday', false);
+            ->allowEmptyDate('user_birthday', true);
 
         $validator
             ->scalar('user_password')
@@ -90,7 +71,7 @@ class UsersTable extends Table
         $validator
             ->date('user_out')
             ->requirePresence('user_out', 'create')
-            ->allowEmptyDate('user_out', false);
+            ->allowEmptyDate('user_out', true);
 
         return $validator;
     }

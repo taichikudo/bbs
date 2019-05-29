@@ -26,7 +26,7 @@
           'limit' => 5
         ]);
         $bookstate = $this->paginate($datastate,[
-          'limit' => 5
+          'limit' => 50
         ]);
 
         // $bookinfo = $this->paginate('Bookinfo',[

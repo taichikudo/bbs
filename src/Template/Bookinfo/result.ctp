@@ -1,6 +1,7 @@
 <h1>図書管理目録の登録が完了しました</h1>
-<h3><a href="<?=$this->Url->build(['controller'=>'Bookstate',
-    'action'=>'add']); ?>">続いて台帳の登録に移動できます</a></h3>
+<!-- <h3><a href="<?=$this->Url->build(['controller'=>'Bookstate',
+    'action'=>'add']); ?>">続いて台帳の登録に移動できます</a></h3> -->
+
 <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -22,6 +23,7 @@
                 <td><?= h($obj->bookinfo_auther) ?></td>
                 <td><?= h($obj->bookinfo_com) ?></td>
                 <td><?= h($obj->bookinfo_startday) ?></td>
+<?= $this->Html->link(__('続いて台帳の追加に移動 '), ['controller'=>'bookstate','action' => 'add', $obj->bookinfo_isbn]) ?>
 
             </tr>
             <?php endforeach; ?>

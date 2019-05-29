@@ -1,30 +1,40 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
 <div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
+    <?=$this->Form->create(null,['type'=>'post','url'=>['controller'=>'Users','action'=>'add']])?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?php
-            echo $this->Form->control('user_name');
-            echo $this->Form->control('user_address');
-            echo $this->Form->control('user_tel');
-            echo $this->Form->control('user_email');
-            echo $this->Form->control('user_birthday');
-            echo $this->Form->control('user_password');
-            echo $this->Form->control('user_in');
-            echo $this->Form->control('user_out');
-        ?>
+        <legend><?= __('会員登録') ?></legend>
+
+        <p>名前</p>
+        <?php echo $this->Form->text('Users.user_name');?>
+        <p>住所</p>
+        <?php echo $this->Form->text('Users.user_address');?>
+        <p>電話番号</p>
+        <?php echo $this->Form->text('Users.user_tel');?>
+        <p>メールアドレス</p>
+        <?php echo $this->Form->text('Users.user_email');?>
+        <p>誕生日(ex.200ｘ-12-03)</p>
+        <?php echo $this->Form->control('Users.user_birthday',[
+            'type' => 'date',
+            'label' => false,
+            'monthNames' => false,
+            'maxYear' => date('Y'),
+            'minYear' => date('Y') - 80,
+            'empty' => ' '
+        ]);?>
+        <p>パスワード</p>
+        <?php echo $this->Form->text('Users.user_password');?>
+        <p>入会日(ex.200ｘ-12-03)</p>
+        <?php echo $this->Form->control('Users.user_in',[
+            'type' => 'date',
+            'label' => false,
+            'monthNames' => false,
+            'maxYear' => date('Y'),
+            'minYear' => date('Y') - 80,
+            'empty' => ' '
+        ]);?>
+        <?php echo $this->Form->hidden('Users.user_out');?>
+        <br>
+        <?=$this->Form->submit('送信',['class'=>'searchBtn']) ?>
+        <?= $this->Form->end() ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+
 </div>

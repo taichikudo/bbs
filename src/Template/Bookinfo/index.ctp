@@ -34,7 +34,7 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h($bookinfo->bookinfo_startday) ?></td>
                 <td class="actions">
-                  
+
             </tr>
             <?php endforeach; ?>
         </tbody>

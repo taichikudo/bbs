@@ -3,28 +3,62 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\Time;
+
+
 class RentalController extends AppController
 {
-    public function index(){
+  public function initialize(){
+    parent::initialize();
+
+    $this->loadComponent('Paginator');
+    //モデルのロード
+    $this->loadModel('Bookinfo');
+    $this->loadModel('Bookstate');
+
+  }
+    public function index($kudo=null){
+      $msg = '会員番号を入力してください';
       $rental = $this->Rental;
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
+
         $this->log($rental_user_id);
         // $condition = ['conditions'=>['and'=>['rental_user_id'=>$rental_user_id,'rental_return'=>NULL]]];
-        $condition = ['conditions'=>['rental_user_id'=>$rental_user_id,'rental_return IS NULL']];
+        $condition = [
+          'conditions'=>[
+            'rental_user_id'=>$rental_user_id,
+            'rental_return IS NULL'],
+          'contain'=>[
+            'Bookstate'=>['Bookinfo']
+          ]];
+        $data = $this->Rental->find('all',$condition);
+
+        $this->set('data', $data);
+        $bbs = 0;
+        $this->set(compact('bbs'));
+
+      }elseif($kudo!==null){
+        $condition = [
+          'conditions'=>[
+            'rental_user_id'=>$kudo,
+            'rental_return IS NULL'],
+          'contain'=>[
+            'Bookstate'=>['Bookinfo']
+          ]];
         $data = $this->Rental->find('all',$condition);
         $this->set('data', $data);
         $bbs = 0;
         $this->set(compact('bbs'));
 
+
+
       }
 
+$this->set('msg',$msg);
       //$this->set(compact('myblogs'));
     }
 
-public function result(){
 
-}
     public function view($id = null)
     {
         $rental = $this->Rental->get($id, [
@@ -34,29 +68,20 @@ public function result(){
         $this->set('rental', $rental);
     }
 
-    public function add()
+    public function add($rUser_id=null)
     {
         $rental = $this->Rental->newEntity();
+        $condition = ['fields'=>['rental_user_id'],'conditions'=>['rental_user_id'=>$rUser_id]];
+        $data = $this->Rental->find('all',$condition)->first();
+        $this->set(compact('data'));
         if ($this->request->is('post')) {
           $data = $this->request->data['Rental'];
           $entity = $this->Rental->newEntity($data);
-            $entity->rental_date = new Time(date('Y-m-d'));
+            $entity->rental_date = new Time(date('Y/m/d'));
           $this->Rental->save($entity);
           $this->set(compact('entity'));
           $this->set(compact('rental'));
-            return $this->redirect(['action' => 'index']);
-            // $rental = $this->Rental->patchEntity($rental, $this->request->getData());
-                // $this->set(compact('rental'));
-            // if ($this->Rental->save($rental)) {
-        //         $this->Flash->success(__('ご登録ありがとうございます.'));
-        //
-        //         return $this->redirect(['action' => 'index']);
-        //     }
-        //     $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        // }
-        // $this->set(compact('rental'));
-
-
+            return $this->redirect(['action' => 'index',$data['rental_user_id']]);
     }
   }
 
@@ -66,6 +91,19 @@ public function result(){
       $id = $this->request->query['rental_id'];
       $entity = $this->Rental->get($id);
       $this->set('entity',$entity);
+      $condition = [
+        'conditions'=>[
+          'rental_id'=>$id,
+          'rental_return IS NULL'],
+        'contain'=>[
+          'Bookstate'=>['Bookinfo']
+        ]];
+      $data = $this->Rental->find('all',$condition);
+
+      $this->set('data', $data);
+      // $data = $this->request->data['Rental'];
+      // $entity = $this->Rental->get($data['rental_id']);
+
       }
 
 public function update(){
@@ -76,10 +114,20 @@ public function update(){
     $this->Rental->patchEntity($entity,$data);
     $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
+    $this->set(compact('rental'));
+    $this->set(compact('entity'));
+    $this->set(compact('data'));
   }
-  return $this->redirect(['action'=>'result']);
+  return $this->redirect(['action'=>'result',$entity['rental_id']]);
 }
+public function result(){
+$condition=['conditions'=>['Rental.rental_id'=>$entity['rental_id']]];
 
+$rental = $this->Rental->find('all',$condition);
+
+$this->set(compact('rental'));
+
+}
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

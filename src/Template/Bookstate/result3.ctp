@@ -1,4 +1,4 @@
-<h1>図書管理台帳の廃棄が完了しました</h1>
+<h1>図書管理台帳の変更が完了しました</h1>
 <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -30,3 +30,15 @@
         </tbody>
 
     </table>
+    <nav>
+      <ul>
+        <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>">会員登録</a></li>
+        <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">会員検索</a></li>
+        <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書登録</a></li>
+        <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書検索</a></li>
+        <li><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'index']) ?>">返却、貸出</a></li>
+
+
+
+      </ul>
+    </nav>

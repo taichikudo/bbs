@@ -28,7 +28,7 @@
                 <td><?= h($bookstate->bookstate_out) ?></td>
                 <td><?= h($bookstate->bookstate_etc) ?></td>
                 <td class="actions">
-                  
+
                 </td>
             </tr>
             <?php endforeach; ?>

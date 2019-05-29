@@ -17,39 +17,39 @@
     <h3><?= h($user->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('User Name') ?></th>
+            <th scope="row"><?= __('氏名') ?></th>
             <td><?= h($user->user_name) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Address') ?></th>
+            <th scope="row"><?= __('住所') ?></th>
             <td><?= h($user->user_address) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Tel') ?></th>
+            <th scope="row"><?= __('電話番号') ?></th>
             <td><?= h($user->user_tel) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Email') ?></th>
+            <th scope="row"><?= __('メールアドレス') ?></th>
             <td><?= h($user->user_email) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Password') ?></th>
+            <th scope="row"><?= __('パスワード') ?></th>
             <td><?= h($user->user_password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
+            <th scope="row"><?= __('会員番号') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Birthday') ?></th>
+            <th scope="row"><?= __('誕生日') ?></th>
             <td><?= h($user->user_birthday) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User In') ?></th>
+            <th scope="row"><?= __('入会日') ?></th>
             <td><?= h($user->user_in) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Out') ?></th>
+            <th scope="row"><?= __('退会日') ?></th>
             <td><?= h($user->user_out) ?></td>
         </tr>
     </table>
