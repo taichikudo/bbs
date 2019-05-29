@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
+<fieldset>
   <head>
     <meta charset="utf-8">
     <title>資料検索画面</title>
@@ -7,38 +8,37 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
-
-
     <div class="search">
-      <h1>ISBN検索</h1>
-      <?=$this->Form->create(null,
-      ['type'=>'post',
-      'url'=>['controller'=>'Bookmanage',
-      'action'=>'index']])?>
-      <div><?=$this->Form->text('bookinfo_isbn')?></div>
-      <div class="search_form"><?=$this->Form->submit('検索')?></div>
-      <?=$this->Form->end()?>
-    </div>
+      <legend>ISBN検索</legend>
+        <?=$this->Form->create(null,
+        ['type'=>'post',
+        'url'=>['controller'=>'Bookmanage',
+        'action'=>'index']])?>
+        <div id="formTxt"><?=$this->Form->text('bookinfo_isbn')?>
+        <?=$this->Form->submit('検索',['class'=>'searchBtn']) ?></div>
+        <?=$this->Form->end()?>
 
-<?php if(isset($bookstate)&&isset($bookinfo)){ ?>
-    <h1>検索結果</h1>
-    <hr>
-    <h2>資料目録</h2>
+    </div>
+    <div class="bookmanage form columns content">
+    <?php if(isset($bookinfo)){ ?>
+    <?php if(!empty($bookinfo->toArray())){ ?>
+    <legend>検索結果</legend>
+    <br>
+    <h3>資料目録</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_code') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_auther') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_com') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_startday') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn','ISBN番号'); ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname','資料名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_code','分類コード') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_auther','著者名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_com','出版社') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_startday','出版日') ?></th>
+                <th scope="col" class="actions"><?= $this->Paginator->sort('アクション') ?></th>
             </tr>
         </thead>
         <tbody>
-          <?php if(isset($bookinfo)){?>
-            <?php foreach ($bookinfo->toArray() as $bookinfo): ?>
+          <?php foreach ($bookinfo->toArray() as $bookinfo): ?>
             <tr>
                 <td><?= h($bookinfo->bookinfo_isbn) ?></td>
                 <td><?= h($bookinfo->bookinfo_bookname) ?></td>
@@ -47,53 +47,58 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h(date('Y-m-d', strtotime($bookinfo->bookinfo_startday))) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?>
-                    <?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?>
+                    <ul>
+                      <li><?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?></li>
+                      <li class="stateList"><?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?></li>
 
+                    </ul>
                 </td>
             </tr>
             <?php endforeach; ?>
-          <?php } ?>
         </tbody>
     </table>
-
-    <h2>資料台帳</h2>
+    <br>
+    <?php if(!empty($bookstate->toArray())){ ?>
+    <h3>資料台帳</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_isbn') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_in') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_out') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_etc') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id','資料ID') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_isbn','ISBN番号') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_name','資料名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_in','入荷年月日') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_out','廃棄年月日') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_etc','備考') ?></th>
+                <th scope="col" class="actions"><?= $this->Paginator->sort('アクション') ?></th>
             </tr>
         </thead>
         <tbody>
-          <?php if(isset($bookstate)){?>
-            <?php foreach ($bookstate as $bookstate): ?>
-            <tr>
-                <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
-                <td><?= h($bookstate->bookstate_isbn) ?></td>
-                <td><?= h($bookstate->bookstate_name) ?></td>
-                <td><?= h($bookstate->bookstate_in) ?></td>
-                <td><?= h($bookstate->bookstate_out) ?></td>
-                <td><?= h($bookstate->bookstate_etc) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('変更'), ['controller'=>'bookstate','action' => 'edit2', $bookstate->bookstate_id]) ?>
-                    <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
+          <?php foreach ($bookstate as $bookstate): ?>
+          <tr>
+              <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
+              <td><?= h($bookstate->bookstate_isbn) ?></td>
+              <td><?= h($bookstate->bookstate_name) ?></td>
+              <td><?= h($bookstate->bookstate_in) ?></td>
+              <td><?= h($bookstate->bookstate_out) ?></td>
+              <td><?= h($bookstate->bookstate_etc) ?></td>
+              <td class="actions">
+                  <?= $this->Html->link(__('変更'), ['controller'=>'bookstate','action' => 'edit2', $bookstate->bookstate_id]) ?>
+                  <?= $this->Html->link(__('廃棄'), ['controller'=>'bookstate','action' => 'edit', $bookstate->bookstate_id]) ?>
 
-                </td>
-            </tr>
-            <?php endforeach; ?>
-            <?php } ?>
+              </td>
+          </tr>
+          <?php endforeach; ?>
         </tbody>
     </table>
+    <?php } ?>
     <hr>
 <?php } ?>
-    <p><a href="<?=$this->Url->build(['controller'=>'Bookinfo',
+<?php } ?>
+    <br>
+    <p><a class="searchBtn btnLeft" href="<?=$this->Url->build(['controller'=>'Bookinfo',
         'action'=>'add']); ?>">新規目録追加</a></p>
-
+  </div>
   </body>
+</fieldset>
+
 </html>

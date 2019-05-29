@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 ?>
-<?= $msg?>
+ <p><?=$msg?></p>
 <article>
 <p>会員ID検索</p>
 <?=$this->Form->create(null,
@@ -92,7 +92,7 @@ if($bbs>=5){
 
 }else{
   echo $limit .'冊借りることができます';?>
-    <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
+    <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add', $obj->rental_user_id]) ?>">新規貸出</a></p>
 
 <?php } }}?>
 

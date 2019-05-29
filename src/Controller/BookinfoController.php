@@ -80,7 +80,7 @@ class BookinfoController extends AppController
     // {
     //     $bookinfo = $this->Bookinfo->get($id, [
     //         'contain' => []
-    //     ]);
+    //     ]); 
     //     if ($this->request->is(['patch', 'post', 'put'])) {
     //         $bookinfo = $this->Bookinfo->patchEntity($bookinfo, $this->request->getData());
     //         if ($this->Bookinfo->save($bookinfo)) {

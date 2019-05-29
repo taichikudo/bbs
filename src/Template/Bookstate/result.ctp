@@ -30,3 +30,10 @@
         </tbody>
 
     </table>
+    <th scope="col"><?= $this->Paginator->sort('台帳ID') ?></th>
+
+      <th scope="col"><?= $this->Paginator->sort('ISBN番号') ?></th>
+      <th scope="col"><?= $this->Paginator->sort('図書名') ?></th>
+      <th scope="col"><?= $this->Paginator->sort('入荷日') ?></th>
+      <th scope="col"><?= $this->Paginator->sort('廃棄日') ?></th>
+      <th scope="col"><?= $this->Paginator->sort('備考') ?></th>
