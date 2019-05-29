@@ -92,7 +92,7 @@ if($bbs>=5){
 
 }else{
   echo $limit .'冊借りることができます';?>
-    <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add']) ?>">新規貸出</a></p>
+    <p><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'add', $obj->rental_user_id]) ?>">新規貸出</a></p>
 
 <?php } }}?>
 

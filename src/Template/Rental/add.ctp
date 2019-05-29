@@ -8,7 +8,7 @@ error_reporting(0);
     <fieldset>
         <legend><?= __('Add Rental') ?></legend>
         <p>ユーザーID</p>
-            <?php echo $this->Form->text('Rental.rental_user_id');?>
+            <?php echo $this->Form->text('Rental.rental_user_id',['default'=>$data['rental_user_id'],'label'=>false]);?>
             <p>図書ID</p>
             <?php echo $this->Form->text('Rental.rental_book_id');
             echo $this->Form->hidden('Rental.rental_date');

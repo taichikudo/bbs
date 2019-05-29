@@ -26,13 +26,12 @@
                 <td><?= h(date('Y-m-d',strtotime($user->user_birthday))) ?></td>
                 <td><?= h($user->user_password) ?></td>
                 <td><?= h(date('Y-m-d',strtotime($user->user_in))) ?></td>
-                <td><?= h(date('Y-m-d',strtotime($user->user_out))) ?></td>
 
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
     <br><p>上記の情報で登録いたしました。</p>
-<?= $this->Html->link(__('検索画面へ戻る'), ['action' => 'index']) ?>
+<?= $this->Html->link(__('検索画面へ戻る'), ['action' => 'index']) ?><br>
 <?= $this->Html->link(__('トップへ戻る'), ['controller' => 'bbs','action' => 'index']) ?>
 </div>

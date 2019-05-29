@@ -14,12 +14,14 @@
                 <th scope="col"><?= $this->Paginator->sort('生年月日') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('パスワード') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('入会日') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('退会日') ?></th>
+
                 <?php
                   if($user->user_out===null){
                  ?>
                 <th scope="col" class="actions"><?= __('メニュー') ?></th>
-                <?php } ?>
+              <?php }else{ ?>
+                <th scope="col"><?= $this->Paginator->sort('退会日') ?></th>
+              <?php } ?>
 
             </tr>
         </thead>
@@ -34,7 +36,6 @@
                 <td><?= h(date('Y-m-d',strtotime($user->user_birthday))) ?></td>
                 <td><?= h($user->user_password) ?></td>
                 <td><?= h(date('Y-m-d',strtotime($user->user_in))) ?></td>
-                <td><?= h(date('Y-m-d',strtotime($user->user_out))) ?></td>
                 <?php
                   if($user->user_out===null){
                  ?>
@@ -42,6 +43,8 @@
                     <?= $this->Html->link(__('変更'), ['action' => 'edit', $user->user_id]) ?>
                     <?= $this->Html->Link(__('退会'), ['action' => 'remove', $user->user_id]) ?>
                 </td>
+              <?php }else{ ?>
+                <td><?= h(date('Y-m-d',strtotime($user->user_out))) ?></td>
               <?php } ?>
             </tr>
             <?php endforeach;

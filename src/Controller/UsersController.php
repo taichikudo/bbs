@@ -117,7 +117,7 @@ public function result() {
               'rental_user_id' => $data,
               'rental_return IS'=> null]]];
         $entity = $this->Users->Rental->find('all',$condition);
-        if ($entity->count() === 0) {
+        if (empty($entity->toArray())) {
           $entity = $this->Users->get($data);
           // $this->Users->patchEntity($entity,$data);
           date_default_timezone_set('Asia/Tokyo');
