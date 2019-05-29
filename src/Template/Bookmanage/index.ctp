@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
+<fieldset>
   <head>
     <meta charset="utf-8">
     <title>資料検索画面</title>
@@ -7,35 +8,33 @@
     <?= $this->fetch('css') ?>
   </head>
   <body>
-    <div class="bookmanage form columns content">
     <div class="search">
-      <h4>ISBN検索</h4>
-      <fieldset>
+      <legend>ISBN検索</legend>
         <?=$this->Form->create(null,
         ['type'=>'post',
         'url'=>['controller'=>'Bookmanage',
         'action'=>'index']])?>
-        <div><?=$this->Form->text('bookinfo_isbn')?></div>
-        <?=$this->Form->submit('検索',['class'=>'searchBtn btnCenter']) ?>
+        <div id="formTxt"><?=$this->Form->text('bookinfo_isbn')?>
+        <?=$this->Form->submit('検索',['class'=>'searchBtn']) ?></div>
         <?=$this->Form->end()?>
-      </fieldset>
 
     </div>
+    <div class="bookmanage form columns content">
     <?php if(isset($bookinfo)){ ?>
     <?php if(!empty($bookinfo->toArray())){ ?>
-    <h4>検索結果</h4>
+    <legend>検索結果</legend>
     <br>
     <h3>資料目録</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_code') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_auther') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_com') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookinfo_startday') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_isbn','ISBN番号'); ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_bookname','資料名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_code','分類コード') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_auther','著者名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_com','出版社') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookinfo_startday','出版日') ?></th>
+                <th scope="col" class="actions"><?= $this->Paginator->sort('アクション') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -64,13 +63,13 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_isbn') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_in') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_out') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('bookstate_etc') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id','資料ID') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_isbn','ISBN番号') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_name','資料名') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_in','入荷年月日') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_out','廃棄年月日') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('bookstate_etc','備考') ?></th>
+                <th scope="col" class="actions"><?= $this->Paginator->sort('アクション') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -100,4 +99,6 @@
         'action'=>'add']); ?>">新規目録追加</a></p>
   </div>
   </body>
+</fieldset>
+
 </html>

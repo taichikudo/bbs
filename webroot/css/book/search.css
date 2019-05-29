@@ -9,8 +9,8 @@ p.menu{
 }
 .search{
   width: 500px;
-  height: 200px;
-  border: solid 2px #008b8b;
+  height: 100px;
+  /* border: solid 2px #008b8b; */
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -48,3 +48,8 @@ h4{
 /* h3{
   margin-top: 30px;
 } */
+#formTxt{
+  margin-top: 15px;
+  width: 100%;
+  display:inline-flex;
+}

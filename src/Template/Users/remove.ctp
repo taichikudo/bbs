@@ -1,5 +1,6 @@
 <div class="users form large-9 medium-8 columns content">
 <fieldset>
+  <legend><?= __('退会確認画面') ?></legend>
   <?=$this->Form->create($entity,
      ['type'=>'post',
      'url'=>['controller'=>'Users',
