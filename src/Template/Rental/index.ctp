@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 ?>
-<?= $msg?>
+ <p><?=$msg?></p>
 <article>
 <p>会員ID検索</p>
 <?=$this->Form->create(null,
