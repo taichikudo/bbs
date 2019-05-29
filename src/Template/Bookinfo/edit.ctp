@@ -7,13 +7,13 @@
         <p>資料名</p>
         <?php echo $this->Form->text('bookinfo_bookname'); ?>
         <p>分類コード</p>
-        <?php echo $this->Form->control('bookinfo_code'); ?>
+        <?php echo $this->Form->text('bookinfo_code'); ?>
         <p>著者</p>
-        <?php echo $this->Form->control('bookinfo_auther'); ?>
+        <?php echo $this->Form->text('bookinfo_auther'); ?>
         <p>出版社</p>
-        <?php echo $this->Form->control('bookinfo_com'); ?>
+        <?php echo $this->Form->text('bookinfo_com'); ?>
         <p>出版日</p>
-        <?php echo $this->Form->control('bookinfo_startday',[
+        <?php echo $this->Form->date('bookinfo_startday',[
             'type' => 'date',
             'label' => false,
             'monthNames' => false,

@@ -25,7 +25,7 @@
                   <td><?= h($obj->bookinfo_code) ?></td>
                   <td><?= h($obj->bookinfo_auther) ?></td>
                   <td><?= h($obj->bookinfo_com) ?></td>
-                  <td><?= h($obj->bookinfo_startday) ?></td>
+                    <td><?= h(date('Y-m-d',strtotime($obj->bookinfo_startday))) ?></td>
 
               </tr>
               <?php endforeach; ?>
