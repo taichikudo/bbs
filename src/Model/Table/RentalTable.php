@@ -54,7 +54,7 @@ $this->belongsTo('Bookstate',[
     {
         $validator
             ->integer('rental_id','IDは半角英数字で入力してください')
-            ->allowEmptyString('rental_id', 'create');
+            ->allowEmptyString('rental_id',false);
 
         $validator
                 ->integer('rental_user_id','IDは半角英数字で入力してください')
