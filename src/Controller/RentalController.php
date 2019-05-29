@@ -17,9 +17,11 @@ class RentalController extends AppController
 
   }
     public function index($kudo=null){
+      $msg = '会員番号を入力してください';
       $rental = $this->Rental;
       if($this->request->is('post')){
         $rental_user_id = $this->request->getData('rental_user_id');
+
         $this->log($rental_user_id);
         // $condition = ['conditions'=>['and'=>['rental_user_id'=>$rental_user_id,'rental_return'=>NULL]]];
         $condition = [
@@ -52,7 +54,7 @@ class RentalController extends AppController
 
       }
 
-
+$this->set('msg',$msg);
       //$this->set(compact('myblogs'));
     }
 
@@ -110,10 +112,17 @@ public function update(){
     $entity->rental_return = new Time(date('Y-m-d'));
     $this->Rental->save($entity);
     $this->set(compact('rental'));
+    $this->set(compact('entity'));
+    $this->set(compact('data'));
   }
-  return $this->redirect(['action'=>'result']);
+  return $this->redirect(['action'=>'result',$entity['rental_id']]);
 }
 public function result(){
+$condition=['conditions'=>['Rental.rental_id'=>$entity['rental_id']]];
+
+$rental = $this->Rental->find('all',$condition);
+
+$this->set(compact('rental'));
 
 }
     public function delete($id = null)

@@ -54,15 +54,15 @@ $this->belongsTo('Bookstate',[
     {
         $validator
             ->integer('rental_id','IDは半角英数字で入力してください')
-            ->allowEmptyString('rental_id',false);
+            ->notEmpty('rental_id');
 
         $validator
                 ->integer('rental_user_id','IDは半角英数字で入力してください')
-                ->allowEmptyString('rental_user_id', false);
+                ->notEmpty('rental_user_id');
 
         $validator
                   ->integer('rental_book_id','IDは半角英数字で入力してください')
-                  ->allowEmptyString('rental_book_id', false);
+                  ->notEmpty('rental_book_id');
         $validator
             ->scalar('rental_date')
             ->requirePresence('rental_date', 'create')

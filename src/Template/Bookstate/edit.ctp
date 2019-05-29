@@ -24,7 +24,7 @@
             echo $this->Form->hidden('bookstate_book_id');
             echo $this->Form->hidden('bookstate_isbn');
             echo $this->Form->hidden('bookstate_name');
-            echo $this->Form->control('bookstate_in');
+            echo $this->Form->hidden('bookstate_in');
             echo $this->Form->control('bookstate_out');
             echo $this->Form->hidden('bookstate_etc');
         ?>
