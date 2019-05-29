@@ -31,5 +31,3 @@
         </tbody>
 
     </table>
-
-<?= $this->Html->link(__('トップへ戻る'), ['action' => 'index']) ?>
