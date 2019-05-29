@@ -1,14 +1,16 @@
-    <?=$this->Form->create($entity,
-    ['type'=>'post',
-    'url'=>['controller'=>'Rental',
-    'action'=>'update']]) ?>
+<fieldset>
+  <legend>返却確認画面</legend>
+  <?=$this->Form->create($entity,
+  ['type'=>'post',
+  'url'=>['controller'=>'Rental',
+  'action'=>'update']]) ?>
 <?=$this->Form->hidden('Rental.rental_id')?>
-<h2>以下を返却しますか？</h2>
+<h4>以下を返却しますか？</h4><br>
 <tbody>
-  <table>
+<table>
 
 
- 
+
 <th>会員ID</th><th>資料ID</th><th>資料名</th><th>貸出日</th><th>備考</th>
 </tr>
 
@@ -28,7 +30,7 @@
 </tr>
 </table>
 </tbody>
-
-
-<div><?=$this->Form->submit('返却')?></div>
+<?=$this->Form->submit('返却',['class'=>'searchBtn btnLeft']) ?>
 <?=$this->Form->end()?>
+
+</fieldset>

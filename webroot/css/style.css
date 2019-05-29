@@ -551,6 +551,11 @@ table td {
   float: left;
   margin-bottom: 50px;
 }
+.btnLeft2{
+  float: left;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
 .btnCenter{
   margin-top: 10px;
   float: none;
@@ -559,4 +564,9 @@ table tr th{
   background-color: #dadada;
   border-left: solid 2px white;
   border-right: solid 2px white;
+}
+#limit{
+  /* color: red; */
+  font-size: 1.2em;
+  font-weight: bold;
 }
