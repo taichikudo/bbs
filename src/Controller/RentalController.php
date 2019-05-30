@@ -34,6 +34,7 @@ class RentalController extends AppController
         $data = $this->Rental->find('all',$condition);
 
         $this->set('data', $data);
+        $this->set(compact('rental_user_id'));
         $bbs = 0;
         $this->set(compact('bbs'));
 
@@ -49,7 +50,7 @@ class RentalController extends AppController
         $this->set('data', $data);
         $bbs = 0;
         $this->set(compact('bbs'));
-
+        $this->set('rental_user_id',$kudo);
 
 
       }
@@ -68,9 +69,12 @@ $this->set('msg',$msg);
         $this->set('rental', $rental);
     }
 
-    public function add($rUser_id=null)
+    public function add($rUser_id=null,$rUser2_id=null)
     {
         $rental = $this->Rental->newEntity();
+        if($rUser_id === null){
+          $rUser_id = $rUser2_id;
+        }
         $condition = ['fields'=>['rental_user_id'],'conditions'=>['rental_user_id'=>$rUser_id]];
         $data = $this->Rental->find('all',$condition)->first();
         $this->set(compact('data'));
@@ -123,7 +127,7 @@ public function result(){
     $rental_id = $this->request->query['rental_id'];
     $entity = $this->Rental->get($rental_id);
     $this->set('entity',$entity);
-  
+
 }
     public function delete($id = null)
     {

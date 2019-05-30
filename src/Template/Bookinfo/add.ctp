@@ -1,7 +1,7 @@
 <div class="bookinfo form large-9 medium-8 columns content">
     <?= $this->Form->create($bookinfo) ?>
     <fieldset>
-        <legend><?= __('資料目録編集画面') ?></legend>
+        <legend><?= __('新規目録登録') ?></legend>
         <p>ISBNコード</p>
         <?php echo $this->Form->text('bookinfo_isbn',['label'=>false]); ?>
         <p>資料名</p>
@@ -13,7 +13,7 @@
         <p>出版社</p>
         <?php echo $this->Form->text('bookinfo_com'); ?>
         <p>出版日</p>
-        <?php echo $this->Form->date('bookinfo_startday',[
+        <?php echo $this->Form->control('bookinfo_startday',[
             'type' => 'date',
             'label' => false,
             'monthNames' => false,

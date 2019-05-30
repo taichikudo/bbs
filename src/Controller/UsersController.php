@@ -53,7 +53,7 @@ class UsersController extends AppController
         if($this->Users->save($entity)) {
            return $this->redirect(['action' => 'result']);
          } else{
-             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください'));
+             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
          }
          $this->set(compact('entity'));
          $this->set(compact('user'));

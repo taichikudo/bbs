@@ -24,12 +24,20 @@ error_reporting(0);
     </div>
 
     <div class="rental form columns content">
+
     <?php if(isset($data)){ ?>
-    <?php if(!empty($data->toArray())){ ?>
-    <br>
-    <p><legend>検索結果</legend></p>
-    <br>
-    <h3>貸出情報</h3>
+      <br>
+      <p><legend>検索結果</legend></p>
+      <br>
+      <h3>貸出情報</h3>
+      <ul>
+        <li>会員ID：<?=$rental_user_id?></li>
+      </ul>
+    <?php if(empty($data->toArray())){ ?>
+      <p>貸出中の資料はありません。</p>
+    <?php }elseif(!empty($data->toArray())){ ?>
+
+      <!-- <h3 class="nonfloat">貸出台帳</h3> -->
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -92,7 +100,6 @@ error_reporting(0);
     </tr>
     <?php endforeach; ?>
     <?php } ?>
-  <?php ?>
     <?php
     if($a>=1){
     echo "貸出期限を過ぎているものがあります";
@@ -104,7 +111,7 @@ error_reporting(0);
 
     }else{?>
       <h5>あと <span id="limit"><?=$limit?>冊</span> 借りることができます。</h5>
-        <a class="searchBtn btnLeft2" href="<?=$this->Url->build(['controller' => 'Rental', 'action' => 'add', $obj->rental_user_id]); ?>">新規貸出</a><br>
+        <a class="searchBtn btnLeft2" href="<?=$this->Url->build(['controller' => 'Rental', 'action' => 'add', $obj->rental_user_id,$rental_user_id]); ?>">新規貸出</a><br>
     <?php }
     }
 }

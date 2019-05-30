@@ -1,4 +1,6 @@
+<div class="rental form columns content">
 <fieldset>
+  <legend>返却確認画面</legend>
 <?=$this->Form->create($entity,
     ['type'=>'post',
     'url'=>['controller'=>'Rental',
@@ -34,3 +36,4 @@
 <?=$this->Form->end()?>
 
 </fieldset>
+</div>

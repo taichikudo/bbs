@@ -1,4 +1,4 @@
-<div class="users form large-9 medium-8 columns content">
+<div class="bookinfo form columns content">
 <fieldset>
   <legend>資料目録変更完了画面</legend>
   <h4>資料目録の変更が完了しました。</h4><br>
@@ -26,21 +26,12 @@
                   <td><?= h($obj->bookinfo_auther) ?></td>
                   <td><?= h($obj->bookinfo_com) ?></td>
                     <td><?= h(date('Y-m-d',strtotime($obj->bookinfo_startday))) ?></td>
-
               </tr>
-              <?php endforeach; ?>
-
           </tbody>
-
       </table>
-      <nav>
-        <ul>
-          <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>">会員登録</a></li>
-          <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">会員検索</a></li>
-          <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書登録</a></li>
-          <li><a href="<?= $this->Url->build(['controller' => 'Bookmanage', 'action' => 'index']) ?>">図書検索</a></li>
-          <li><a href="<?= $this->Url->build(['controller' => 'Rental', 'action' => 'index']) ?>">返却、貸出</a></li>
-        </ul>
-      </nav>
+      <br>
+      <a class="searchBtn btnLeft2" href="<?= $this->Url->build(['controller'=>'bookstate','action' => 'add', $obj->bookinfo_isbn]) ?>">新規台帳追加</a>
+      <a class="searchBtn btnLeft2 nonfloat" href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a>
+      <?php endforeach; ?>
 </fieldset>
 </div>

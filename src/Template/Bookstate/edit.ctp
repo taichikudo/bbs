@@ -1,7 +1,7 @@
-
+<div class="bookstate form columns content">
     <?= $this->Form->create($bookstate) ?>
     <fieldset>
-        <legend><?= __('Edit Bookstate') ?></legend>
+        <legend><?= __('廃棄入力') ?></legend>
         <?php echo $this->Form->hidden('bookstate_id'); ?>
 
         <?php echo $this->Form->hidden('bookstate_isbn'); ?>
@@ -17,7 +17,7 @@
             'empty' => ' '
         ]);?>
           <p>廃棄日</p>
-          <?php echo $this->Form->date('bookstate_in',[
+          <?php echo $this->Form->control('bookstate_out',[
               'type' => 'date',
               'label' => false,
               'monthNames' => false,
@@ -36,7 +36,7 @@
             echo $this->Form->control('bookstate_out');
             echo $this->Form->hidden('bookstate_etc');
         ?> -->
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?=$this->Form->submit('破棄',['class'=>'searchBtn']) ?>
     <?= $this->Form->end() ?>
+    </fieldset>
 </div>
