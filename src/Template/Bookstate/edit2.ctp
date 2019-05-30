@@ -17,10 +17,10 @@
                 'minYear' => date('Y') - 80,
                 'empty' => ' '
             ]);?>
-            <?php  echo $this->Form->hidden('bookstate_out');?>
+            <!-- <?php  echo $this->Form->hidden('bookstate_out');?> -->
             <p>備考</p>
             <?php echo $this->Form->text('bookstate_etc');?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?=$this->Form->submit('送信',['class'=>'searchBtn']) ?>
     <?= $this->Form->end() ?>
+    </fieldset>
 </div>

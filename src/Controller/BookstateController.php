@@ -109,7 +109,7 @@ class BookstateController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
-            $bookstate->bookstate_out = date('Y-m-d',strtotime($this->request->getData('bookstate_out')));
+            // $bookstate->bookstate_out = date('Y-m-d',strtotime($this->request->getData('bookstate_out')));
             if ($this->Bookstate->save($bookstate)) {
                 $this->Flash->success(__('変更完了しました。'));
 return $this->redirect(['action' => 'result3',$bookstate['bookstate_id']]);
