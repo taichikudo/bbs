@@ -51,11 +51,11 @@ class BookinfoController extends AppController
         if ($this->request->is('post')) {
             $bookinfo = $this->Bookinfo->patchEntity($bookinfo, $this->request->getData());
             if ($this->Bookinfo->save($bookinfo)) {
-                $this->Flash->success(__('The bookinfo has been saved.'));
+                $this->Flash->success(__('追加完了しました。'));
 
                 return $this->redirect(['action' => 'result',$bookinfo['bookinfo_isbn']]);
             }
-            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+            $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
         }
         $this->set(compact('bookinfo'));
     }
@@ -100,10 +100,10 @@ class BookinfoController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $bookinfo = $this->Bookinfo->patchEntity($bookinfo, $this->request->getData());
             if ($this->Bookinfo->save($bookinfo)) {
-                $this->Flash->success(__('The bookinfo has been saved.'));
+                $this->Flash->success(__('変更完了しました。'));
   return $this->redirect(['action' => 'result2',$bookinfo['bookinfo_isbn']]);
             }
-            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+            $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
         }
         $this->set(compact('bookinfo'));
     }

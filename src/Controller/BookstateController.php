@@ -55,11 +55,11 @@ class BookstateController extends AppController
          if ($this->request->is('post')) {
              $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
              if ($this->Bookstate->save($bookstate)) {
-                 $this->Flash->success(__('The bookstate has been saved.'));
+                 $this->Flash->success(__('登録完了しました。'));
 
                  return $this->redirect(['action' => 'result',$bookstate['bookstate_id']]);
              }
-             $this->Flash->error(__('The bookstate could not be saved. Please, try again.'));
+             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
          }
          $this->set(compact('bookstate'));
          $this->set(compact('data'));
@@ -83,11 +83,12 @@ class BookstateController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+            $bookstate->bookstate_in = date('Y-m-d',strtotime($this->request->getData('bookstate_in')));
             if ($this->Bookstate->save($bookstate)) {
-                $this->Flash->success(__('The bookinfo has been saved.'));
+                $this->Flash->success(__('廃棄処理を完了しました。'));
                 return $this->redirect(['action' => 'result2',$bookstate['bookstate_id']]);
             }
-            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+            $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
         }
         $this->set(compact('bookstate'));
 
@@ -108,11 +109,12 @@ class BookstateController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $bookstate = $this->Bookstate->patchEntity($bookstate, $this->request->getData());
+            // $bookstate->bookstate_out = date('Y-m-d',strtotime($this->request->getData('bookstate_out')));
             if ($this->Bookstate->save($bookstate)) {
-                $this->Flash->success(__('The bookinfo has been saved.'));
+                $this->Flash->success(__('変更完了しました。'));
 return $this->redirect(['action' => 'result3',$bookstate['bookstate_id']]);
             }
-            $this->Flash->error(__('The bookinfo could not be saved. Please, try again.'));
+            $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
         }
         $this->set(compact('bookstate'));
 

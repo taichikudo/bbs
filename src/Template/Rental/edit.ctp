@@ -1,11 +1,15 @@
-    <?=$this->Form->create($entity,
+<div class="rental form columns content">
+<fieldset>
+  <legend>返却確認画面</legend>
+<?=$this->Form->create($entity,
     ['type'=>'post',
     'url'=>['controller'=>'Rental',
     'action'=>'update']]) ?>
-<?=$this->Form->hidden('Rental.rental_id')?>
-<h2>以下を返却しますか？</h2>
+<?=$this->Form->hidden('Rental.rental_id',['value'=>$this->request->query['rental_id']])?>
+<h4>以下を返却しますか？</h4><br>
+
 <tbody>
-  <table>
+<table>
 
 
  
@@ -28,7 +32,8 @@
 </tr>
 </table>
 </tbody>
-
-
-<div><?=$this->Form->submit('返却')?></div>
+<?=$this->Form->submit('返却',['class'=>'searchBtn btnLeft']) ?>
 <?=$this->Form->end()?>
+
+</fieldset>
+</div>

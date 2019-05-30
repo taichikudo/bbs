@@ -34,7 +34,7 @@
           </tbody>
       </table>
       <br><p>上記の情報で登録いたしました。</p>
-      <p><a class="searchBtn btnLeft" href="<?=$this->Url->build(['action'=>'index']); ?>">検索画面へ戻る</a></p>
-      <p><a class="searchBtn btnLeft" href="<?=$this->Url->build(['controller' => 'bbs','action' => 'index']); ?>">トップ画面へ戻る</a></p>
+      <p><a class="searchBtn btnLeft2" href="<?=$this->Url->build(['action'=>'index']); ?>">検索画面へ戻る</a></p>
+      <p><a class="searchBtn btnLeft2 nonfloat" href="<?=$this->Url->build(['controller' => 'bbs','action' => 'index']); ?>">トップ画面へ戻る</a></p>
   </div>
 </fieldset>

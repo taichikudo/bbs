@@ -27,7 +27,6 @@ table{
   /* border: solid 2px #008b8b; */
 }
 ul {
-  list-style: none;
   font-size: 1em;
 }
 ul li.stateList{
@@ -40,6 +39,10 @@ ul li.stateList{
 }
 ul li.stateList:hover{
   font-size: 1.5em;
+}
+ul.nonlist{
+  list-style: none;
+  padding: 0;
 }
 h4{
   color: #008b8b;

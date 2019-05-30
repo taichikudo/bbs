@@ -47,7 +47,7 @@
                 <td><?= h($bookinfo->bookinfo_com) ?></td>
                 <td><?= h(date('Y-m-d', strtotime($bookinfo->bookinfo_startday))) ?></td>
                 <td class="actions">
-                    <ul>
+                    <ul class="nonlist">
                       <li><?= $this->Html->link(__('変更'), ['controller'=>'bookinfo','action' => 'edit', $bookinfo->bookinfo_isbn]) ?></li>
                       <li class="stateList"><?= $this->Html->link(__('台帳追加 '), ['controller'=>'bookstate','action' => 'add', $bookinfo->bookinfo_isbn]) ?></li>
 
@@ -78,7 +78,9 @@
               <td><?= $this->Number->format($bookstate->bookstate_id) ?></td>
               <td><?= h($bookstate->bookstate_isbn) ?></td>
               <td><?= h($bookstate->bookstate_name) ?></td>
-              <td><?= h($bookstate->bookstate_in) ?></td>
+              <td><?= h(date('Y-m-d', strtotime($bookstate->bookstate_in))) ?></td>
+              <!-- <td><?= h(date('Y-m-d', strtotime($bookstate->bookstate_out))) ?></td>
+              <td><?= h($bookstate->bookstate_in) ?></td> -->
               <td><?= h($bookstate->bookstate_out) ?></td>
               <td><?= h($bookstate->bookstate_etc) ?></td>
               <td class="actions">

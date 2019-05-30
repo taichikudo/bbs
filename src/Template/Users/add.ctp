@@ -1,7 +1,7 @@
 <div class="users form large-9 medium-8 columns content">
     <?=$this->Form->create(null,['type'=>'post','url'=>['controller'=>'Users','action'=>'add']])?>
     <fieldset>
-        <legend><?= __('会員登録') ?></legend>
+        <legend><?= __('新規会員登録') ?></legend>
 
         <p>名前</p>
         <?php echo $this->Form->text('Users.user_name');?>

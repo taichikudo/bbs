@@ -322,12 +322,14 @@ pre {
     width: 300px;
     padding-left: 10px;
     background: #01545b;
+    height:70px;
 }
 .top-bar-section{
   padding-right: 25px;
 }
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
     background: #116d76;
+    height:70px;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -533,8 +535,8 @@ table td {
   font-weight: bold;
   padding: 0.55em 0.5em;
   text-decoration: none;
-  color: #008b8b;
-  background: #DCDCDC;
+  color: #FCFCFC;
+  background: #008b8b;
   transition: .4s;
   width: 150px;
   height: 37px;
@@ -544,13 +546,25 @@ table td {
   border: none;
 }
 .searchBtn:hover{
-  background: #00BBBB;
+  background: #249F9F;
+  /* background: #99FFFF; */
   color: white;
+  border-radius: 1em;
 }
 .btnLeft{
   float: left;
   margin-bottom: 50px;
 }
+.btnLeft2{
+  float: left;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.nonfloat{
+  /* padding-top: 20px; */
+  clear: both;
+}
+
 .btnCenter{
   margin-top: 10px;
   float: none;
@@ -559,4 +573,9 @@ table tr th{
   background-color: #dadada;
   border-left: solid 2px white;
   border-right: solid 2px white;
+}
+#limit{
+  /* color: red; */
+  font-size: 1.2em;
+  font-weight: bold;
 }

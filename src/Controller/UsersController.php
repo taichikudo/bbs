@@ -3,18 +3,27 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\Time;
+use App\Form\UsersForm;
+use Cake\Auth\DefaultPasswordHasher;
+
 
 class UsersController extends AppController
 {
 
     public function index() {
+      $user　= new UsersForm();
       if($this->request->is('post')){
+        if ($user->execute($this->request->data)) {
         $find = $this->request->data['user_id'];
         $condition = ['conditions'=>['user_id'=>$find]];
         $data = $this->Users->find('all',$condition);
+        $this->Flash->success('正常です');
+      }else{
+        $this->Flash->error('整数で入力してください。');
       }
       $this->set(compact('data'));
     }
+  }
 
     public function view($user_id = null)
     {
@@ -53,7 +62,7 @@ class UsersController extends AppController
         if($this->Users->save($entity)) {
            return $this->redirect(['action' => 'result']);
          } else{
-             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください'));
+             $this->Flash->error(__('入力方法に間違いがあります。もう一度入力してください。'));
          }
          $this->set(compact('entity'));
          $this->set(compact('user'));

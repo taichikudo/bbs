@@ -6,7 +6,7 @@ error_reporting(0);
 <?= $msg?>
 <?=$this->Form->create($entity,['type'=>'post','url'=>['controller'=>'Rental','action'=>'add']])?>
     <fieldset>
-        <legend><?= __('Add Rental') ?></legend>
+        <legend><?= __('新規貸出登録') ?></legend>
         <p>ユーザーID</p>
             <?php echo $this->Form->text('Rental.rental_user_id',['default'=>$data['rental_user_id'],'label'=>false]);?>
             <p>図書ID</p>
