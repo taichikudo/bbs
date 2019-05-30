@@ -37,7 +37,7 @@
                     <td><?= h($user->user_tel) ?></td>
                     <td><?= h($user->user_email) ?></td>
                     <td><?= h(date('Y-m-d',strtotime($user->user_birthday))) ?></td>
-                    <td><?= h($user->user_password) ?></td>
+                    <td> ●●●●●●●●●● </td>
                     <td><?= h(date('Y-m-d',strtotime($user->user_in))) ?></td>
                     <?php
                       if($user->user_out===null){
