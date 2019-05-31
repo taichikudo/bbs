@@ -29,9 +29,9 @@
                 </tr>
             </tbody>
         </table>
-        <a class="searchBtn btnLeft2" href="<?= $this->Url->build(['action' => 'add', $obj->bookstate_isbn]) ?>">続けて台帳追加</a>
-        <a class="searchBtn btnLeft2" href="<?= $this->Url->build(['controller' => 'Bookmanage','action' => 'index', $obj->bookstate_isbn]) ?>">検索結果に戻る</a>
-        <a class="searchBtn btnLeft2 nonfloat" href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a>
+        <a class="searchBtn btnLeft" href="<?= $this->Url->build(['action' => 'add', $obj->bookstate_isbn]) ?>">続けて台帳追加</a>
+        <a class="searchBtn btnLeft2 nonfloat" href="<?= $this->Url->build(['controller' => 'Bookmanage','action' => 'index', $obj->bookstate_isbn]) ?>">検索結果に戻る</a>
+        <a class="searchBtn btnLeft2" href="<?= $this->Url->build(['controller' => 'Bbs', 'action' => 'index']) ?>">トップに戻る</a>
         <?php endforeach; ?>
   </fieldset>
 </div>
